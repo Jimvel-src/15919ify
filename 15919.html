@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>15919+</title>
+		<script src="15919.js" defer></script>
+	</head>
+	<body>
+		<h1 class="title" id="title"></h1>
+		<textarea id="inputText" class="inputText"></textarea>
+		<p id="outputText">output.. </p>
+		<button id="run" class="run">manual refresh</button>
+		<script>
+			let idleTimer;
+			const delayIdle = 500; //adjust if you want faster or slower refreshes.
+			// const inputText = document.getElementById('inputText').value;
+			const inputTextBox = document.getElementById('inputText'); 
+			const outputText = "outputText";
+			inputTextBox.addEventListener('input', (e) => {
+				clearTimeout(idleTimer);
+				idleTimer = setTimeout(() => {
+					console.log("idle. trying run.");
+					convertText(inputTextBox.value, outputText); // dont touch this line, auto refresh and button stops working
+				}, delayIdle);
+			});
+			document.getElementById('run').onclick = () => convertText(inputText, outputText); //  manual override
+
+			inputTextBox.addEventListener('keydown', (e) => {
+				if (e.key === 'Enter') {
+					convertText(inputTextBox.value, outputText);
+					console.log("new line auto render.");
+				}
+			});
+		</script>
+	</body>
+</html>
+
