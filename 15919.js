@@ -1,5 +1,5 @@
 const PUNCTUATION = new Set(['.', ',', '^', ';', '~', '-']);
-const VOWELS = new Set(['a', 'e', 'i', 'o', 'u', 'aa', 'ee', 'ii', 'oo', 'uu', 'ai', 'au', ';m', '.h', ',r', ',rr', ',l', ',ll']);
+const VOWELS = new Set(['a', 'e', 'i', 'o', 'u', 'aa', 'ee', 'ii', 'oo', 'uu', 'ai', 'au', ';m', '.h', ',r', ',rr', ',l', ',ll', '^u']);
 
 function isLetter(char) {
 	if (!char) return false;
@@ -30,8 +30,16 @@ const PUNCT_DICT = {
     ";m": "t;M", ".h": "t.H", ";n": "t;N", "~n": "t~N", ".n": "t.N",
     "_r": "t_R", "_t": "t_T", "_n": "t_N", "_l": "t_L",
     ".l": "t.L", "v": "tV", ".s": "t.S", "'": "t'", "^u": "t^U",
-	".t":"t.T", ".th": "t.TH", ".d":"t.D", ".dh": "t.Dh"
+	".t":"t.T", ".th": "t.TH", ".d":"t.D", ".dh": "t.Dh", // "*":"tZWJ",
+	"*.n":"t*.N", "*n":"t*N", "*r":"t*R", "*l": "t*L",  "*.l": "t*.L", "*k": "t*K"
+	
 };
+
+const CHILLS = new Set(["t*.N", "t*N", "t*R", "t*L", "t*.L", "t*K"]);
+function isChill(char) {
+	return CHILLS.has(char);
+}
+
 const MASTER_DICT = { ...STANDARD_DICT, ...PUNCT_DICT };
 
 function parseStandardChunk(text, startIndex) {
@@ -193,14 +201,13 @@ const MALAYALAM_UNICODE = {
 	"t;M": "\u0D02", // Anusvaram (ം)
 	"t.H": "\u0D03", // Visargam (ഃ)
     	"t^U": "\u0D4D", // Chandrakkala (്)
-	"CHILLU": {
-        	"t.N": "\u0D7A", // ൺ
-		"tN": "\u0D7B",  // ൻ
-		"tR": "\u0D7C",  // ർ
-		"tL": "\u0D7D",  // ൽ
-        	"t.L": "\u0D7E"  //, // ൾ
-        //	"tK": "\u0D7F"   // ൿ   //kinda depracated weird malayalam rule, that most users wont encounter
-	}
+//	"tZWJ": "\u200D",
+        	"t*.N": "\u0D7A", // ൺ
+		"t*N": "\u0D7B",  // ൻ
+		"t*R": "\u0D7C",  // ർ
+		"t*L": "\u0D7D",  // ൽ
+        	"t*.L": "\u0D7E", // ൾ
+        	"t*K": "\u0D7F"   // ൿ   //kinda depracated weird malayalam rule, that most users wont encounter
 };
 
 
@@ -225,22 +232,31 @@ function tokensToMalayalam(tokens) {
 		
 		//case zwei: start w/ consonant
 		if (consonant) {
-			if (vowel) { // if cons + vowel
+			if (vowel && vowel=== "t^U") { // if cons + vowel
+				const baseConsonant = MALAYALAM_UNICODE[consonant] || "";
+				const chndrakkala = "\u0D4D"
+				result += baseConsonant + chndrakkala;
+			}
+			else if (vowel) {
 				const baseConsonant = MALAYALAM_UNICODE[consonant] || "";
 				const vowelThing = MALAYALAM_UNICODE.VOWEL_SIGNS[vowel] ?? "";
 				result += baseConsonant + vowelThing;
 			}
 			else { // if no vowel cons
-				if (MALAYALAM_UNICODE.CHILLU[consonant]) {
-					result += MALAYALAM_UNICODE.CHILLU[consonant]; // chillu type shit
-				}	//keep anuswara and chandrakkala
-				else if (consonant === "t;M" || consonant === "t.H") {
+			//	if (MALAYALAM_UNICODE.CHILLU[consonant]) {
+			//		result += MALAYALAM_UNICODE.CHILLU[consonant]; // chillu type shit
+			//	}	//keep anuswara and chandrakkala
+				// else
+				if (consonant === "t;M" || consonant === "t.H") {
 					result += MALAYALAM_UNICODE[consonant] || "";
 				}
-				else {
+				else if (!isChill(consonant)){
 					const chndrakkala = "\u0D4D"
 					const baseConsonant = MALAYALAM_UNICODE[consonant] || "";
 					result += baseConsonant + chndrakkala;
+				}
+				else {
+					result += MALAYALAM_UNICODE[consonant]
 				}
 			}
 		}
@@ -255,12 +271,8 @@ function convertText(inputText, outputDOM) {
 		document.getElementById(outputDOM).innerHTML = finalOut;
 		console.log("run successful.");
 	}
-	else if (document.getElementsByClassName(outputDOM) > 0){
-		document.getElementsByClassName(outputDOM)[0].innerHTML = finalOut;
-		console.log("run successful.");
-	}
 	else {
-		console.warn('target element ${outputDOM} not found')
+		console.warn("target element " + outputDOM + "not found")
 	}
 }
 //:w:w:w
