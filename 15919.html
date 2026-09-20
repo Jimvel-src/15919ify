@@ -21,7 +21,7 @@
 					convertText(inputTextBox.value, outputText); // dont touch this line, auto refresh and button stops working
 				}, delayIdle);
 			});
-			document.getElementById('run').onclick = () => convertText(inputText, outputText); //  manual override
+			document.getElementById('run').onclick = () => convertText(inputTextBox.value, outputText); //  manual override
 
 			inputTextBox.addEventListener('keydown', (e) => {
 				if (e.key === 'Enter') {
