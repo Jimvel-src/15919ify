@@ -29,6 +29,25 @@
 					console.log("new line auto render.");
 				}
 			});
+
+			document.addEventListener('keydown', (e) => {
+				if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+				if (document.activeElement.isContentEditable) return;
+				const isAlpha = /^[a-zA-z]$/.test(e.key);
+				const isEnter = e.key == 'Enter';
+				const isSpace = e.key === ' ' || e.code === 'Space';
+				if (isAlpha || isEnter) {
+					inputTextBox.focus();
+					if (isAlpha || isSpace) {
+						e.preventDefault();
+						const pos = inputTextBox.selectionStart ?? ta.value.length;
+						// const charToInsert = isSpace ? ' ' : e.key; uhh, doessnt work
+						inputTextBox.value = inputTextBox.value.slice(0, pos) + e.key + inputTextBox.value.slice(pos);
+						inputTextBox.selectionStart = inputTextBox.selectionEnd = pos + 1;
+					}
+					inputTextBox.focus();
+				}
+			});
 		</script>
 	</body>
 </html>
