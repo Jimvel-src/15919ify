@@ -13,6 +13,7 @@ An open-source web utility designed to take in text in 7 Bit ISO 15919 format an
 Refer to the following tables for typing instructions based on the modified [7Bit ISO 15919](https://en.wikipedia.org/wiki/ISO_15919)
 
 ### Vowels and Pseudovowels
+Vowel Signs are inputted if consonant is followed by vowel.
 |7 bit ISO 15919|Malayalam Character equivalent|
 |---------------|-----------------------------|
 | `a` | `അ` |
@@ -112,6 +113,7 @@ The Following are only examples.
 | .n.da | ണ്ഡ |
 | nda | ന്ദ |
 | mba | മ്പ | 
+
 and others in the similar format.
 
 
