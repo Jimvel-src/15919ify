@@ -40,9 +40,9 @@
 					inputTextBox.focus();
 					if (isAlpha || isSpace) {
 						e.preventDefault();
-						const pos = inputTextBox.selectionStart ?? ta.value.length;
-						// const charToInsert = isSpace ? ' ' : e.key; uhh, doessnt work
-						inputTextBox.value = inputTextBox.value.slice(0, pos) + e.key + inputTextBox.value.slice(pos);
+						const pos = inputTextBox.selectionStart ?? inputTextBox.value.length;
+						const charToInsert = isSpace ? ' ' : e.key; 
+						inputTextBox.value = inputTextBox.value.slice(0, pos) + charToInsert + inputTextBox.value.slice(pos);
 						inputTextBox.selectionStart = inputTextBox.selectionEnd = pos + 1;
 					}
 					inputTextBox.focus();
