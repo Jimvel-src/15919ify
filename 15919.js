@@ -1,12 +1,6 @@
 const PUNCTUATION = new Set(['.', ',', '^', ';', '~', '-']);
 const VOWELS = new Set(['a', 'e', 'i', 'o', 'u', 'aa', 'ee', 'ii', 'oo', 'uu', 'ai', 'au', ';m', '.h', ',r', ',rr', ',l', ',ll', '^u']);
 
-function isLetter(char) {
-	if (!char) return false;
-	const code = char.charCodeAt(0);
-	return code >= 97 && code <= 122;
-}
-
 function isVowel(char) {
 	return VOWELS.has(char);
 }
@@ -22,7 +16,7 @@ const STANDARD_DICT = {
     "t": "tT", "th": "tTh", "d": "tD", "dh": "tDh", 
     "n": "tN", "p": "tP", "ph": "tPH", "b": "tB", 
     "bh": "tBH", "m": "tM", "sh": "tSH", "l": "tL", 
-    "y": "tY", "r": "tR", "s": "tS", "h": "tH", "rr": "tRr"
+    "y": "tY", "r": "tR", "s": "tS", "h": "tH"
 };
 
 const PUNCT_DICT = {
@@ -30,8 +24,8 @@ const PUNCT_DICT = {
     ";m": "t;M", ".h": "t.H", ";n": "t;N", "~n": "t~N", ".n": "t.N",
     "_r": "t_R", "_t": "t_T", "_n": "t_N", "_l": "t_L",
     ".l": "t.L", "v": "tV", ".s": "t.S", "'": "t'", "^u": "t^U",
-	".t":"t.T", ".th": "t.TH", ".d":"t.D", ".dh": "t.Dh", // "*":"tZWJ",
-	"*.n":"t*.N", "*n":"t*N", "*r":"t*R", "*l": "t*L",  "*.l": "t*.L", "*k": "t*K"
+	".t":"t.T", ".th": "t.TH", ".d":"t.D", ".dh": "t.Dh",
+	"*.n":"t*.N", "*n":"t*N", "*r":"t*R", "*l": "t*L",  "*.l": "t*.L", "*k": "t*K" // really should organise this
 	
 };
 
@@ -50,7 +44,7 @@ function parseStandardChunk(text, startIndex) {
 	let consonantKey = "";
 	let vowelKey = "";
 
-    //revrse chekc ahh
+    // greedy checking so that it doesnt faint on seeing larger clustersa
 	if (!isVowel(text[j])) {
         	if (j + 2 < text.length && MASTER_DICT[text.slice(j, j + 3)]) {
             		consonantKey = text.slice(j, j + 3);
@@ -66,7 +60,7 @@ function parseStandardChunk(text, startIndex) {
         	}
 	}
 
-    // 2. vowel nom nom nom
+    // 2. vowel nom nom 
 	if (j < text.length && isVowel(text[j])) {
 		if (j + 1 < text.length && isVowel(text.slice(j, j + 2)) && MASTER_DICT[text.slice(j, j + 2)]) {
             		vowelKey = text.slice(j, j + 2);
@@ -86,7 +80,7 @@ function parseStandardChunk(text, startIndex) {
             		vowel: MASTER_DICT[vowelKey] || null,
             		raw: text.slice(startIndex, j)
         	},
-        	nextIndex: j
+        	nextIndex: j // this is valid code, really looks like it needs a semicolon
     	};
 }
 
@@ -107,10 +101,10 @@ function scanAndParse(text) {
 
         	if (match) {
             		tokens.push(match.token);
-            		i = match.nextIndex; // jump past nom-nom-nom'd  characters
+            		i = match.nextIndex; // jump past nom-nom-nom'd (consumed) characters
         	} 
 		else {
-            		// fallback
+            		// fallback : just push the unknown input through as is.
 			tokens.push({ type: "UNKNOWN", raw: input[i] });
             		i++;
 		}
@@ -177,6 +171,7 @@ const MALAYALAM_UNICODE = {
 	"tD": "\u0D26", // ദ
 	"tDh": "\u0D27", // ധ
 	"tN": "\u0D28", // ന
+	"t_N" : "\u0D29" ; //  	ഩ
     	"tP": "\u0D2A",  // പ
     	"tPH": "\u0D2B", // ഫ
     	"tB": "\u0D2C",  // ബ
@@ -195,19 +190,18 @@ const MALAYALAM_UNICODE = {
 	"t_R": "\u0D31", // റ
 	"t;N":"\u0D19", // ങ
 	"t~N": "\u0D1E",// ഞ
-	"tRr": "\u0D31" + "\u0D4D" + "\u0D31", // 
+	// "tRr": "\u0D31" + "\u0D4D" + "\u0D31", impractical.
 
     	// special sym.s
 	"t;M": "\u0D02", // Anusvaram (ം)
 	"t.H": "\u0D03", // Visargam (ഃ)
     	"t^U": "\u0D4D", // Chandrakkala (്)
-//	"tZWJ": "\u200D",
         	"t*.N": "\u0D7A", // ൺ
 		"t*N": "\u0D7B",  // ൻ
 		"t*R": "\u0D7C",  // ർ
 		"t*L": "\u0D7D",  // ൽ
         	"t*.L": "\u0D7E", // ൾ
-        	"t*K": "\u0D7F"   // ൿ   //kinda depracated weird malayalam rule, that most users wont encounter
+        	"t*K": "\u0D7F"   // ൿ   
 };
 
 
@@ -216,11 +210,11 @@ function tokensToMalayalam(tokens) {
 	for (const item of tokens) {
 		if (item.type === "SPACE") {
 			result = result + " ";
-			continue;
+			continue; // space is pushed through
 		}
 		if (item.type === "UNKNOWN") {
 			result = result + item.raw;
-			continue;
+			continue; // push unknown input through
 		}
 		const {consonant, vowel} = item;
 
@@ -237,16 +231,12 @@ function tokensToMalayalam(tokens) {
 				const chndrakkala = "\u0D4D"
 				result += baseConsonant + chndrakkala;
 			}
-			else if (vowel) {
+			else if (vowel) { 
 				const baseConsonant = MALAYALAM_UNICODE[consonant] || "";
 				const vowelThing = MALAYALAM_UNICODE.VOWEL_SIGNS[vowel] ?? "";
 				result += baseConsonant + vowelThing;
 			}
-			else { // if no vowel cons
-			//	if (MALAYALAM_UNICODE.CHILLU[consonant]) {
-			//		result += MALAYALAM_UNICODE.CHILLU[consonant]; // chillu type shit
-			//	}	//keep anuswara and chandrakkala
-				// else
+			else { 
 				if (consonant === "t;M" || consonant === "t.H") {
 					result += MALAYALAM_UNICODE[consonant] || "";
 				}
@@ -264,15 +254,15 @@ function tokensToMalayalam(tokens) {
 	return result;
 }
 
-function convertText(inputText, outputDOM) {
+function convertText(inputText, outputDOM, shouldLog) {
 	const tokenized = scanAndParse(inputText);
 	const finalOut = tokensToMalayalam(tokenized);
 	if (document.getElementById(outputDOM)) {
 		document.getElementById(outputDOM).innerHTML = finalOut;
-		console.log("run successful.");
+		if (shouldLog) { console.log("run successful."); }
 	}
 	else {
-		console.warn("target element " + outputDOM + "not found")
+		console.warn("target element " + outputDOM + " not found")
 	}
 }
 //:w:w:w
