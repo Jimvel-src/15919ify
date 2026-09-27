@@ -27,7 +27,7 @@
 
 			inputTextBox.addEventListener('keydown', (e) => {  // press enter, auto refreesh
 				if (e.key === 'Enter') {
-					convertText(inputTextBox.value, outputText);
+					convertText(inputTextBox.value, outputText, shouldLog);
 					if (shouldLog) {
 						console.log("new line, auto run ");				
 					}
