@@ -1,5 +1,6 @@
 # 15919ify+
-An open-source web utility designed to take in text in 7 Bit ISO 15919 format and transcode it into various Indic Scripts. While built with a modular architecture capable of scaling to multiple languages, it currently only has support for Malayalam. Current Malayalam setup is made taking huge liberties like introducing various characters not in the current standard.
+An open-source web utility designed to take in text in 7 Bit ISO 15919 format and transcode it into various Indic Scripts. While built with a modular architecture capable of scaling to multiple languages, it currently only has support for Malayalam and Tamil (not fully ironed out). Current Malayalam setup is made taking huge liberties like introducing various characters not in the current standard.
+Try the tool out [here](https://sox.nekoweb.org/15919.html)
 
 ## File structure
 * `15919.js` - The core parsing engine and transliteraation framework. Currently only supports mapping to Malayalam Unicode but can be modified to accomodate other langauges
