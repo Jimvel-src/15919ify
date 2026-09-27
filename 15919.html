@@ -7,12 +7,17 @@
 		<h1 class="title" id="title"></h1>
 		<textarea id="inputText" class="inputText"></textarea>
 		<p id="outputText">output.. </p>
+			<select id="langdd">
+				<option value="mal">Malayalam</option>
+				<option value="tamil">Tamil</optiom>
+			</select>
 		<button id="run" class="run">manual refresh</button>
 		<script>
 			let idleTimer;
 			const delayIdle = 500; //adjust if you want faster or slower refreshes.
 			const inputTextBox = document.getElementById('inputText'); 
 			const outputText = "outputText";
+			const dd = document.getElementById('langdd');
 			const shouldLog = true;
 			inputTextBox.addEventListener('input', (e) => {
 				clearTimeout(idleTimer);
@@ -20,17 +25,27 @@
 					if (shouldLog) {
 						console.log("idle. trying run.");				
 					}
-					convertText(inputTextBox.value, outputText, shouldLog); // the actual function
+					const lang = dd.value;
+					convertText(inputTextBox.value, outputText, lang, shouldLog); // the actual function
 				}, delayIdle);
 			});
-			document.getElementById('run').onclick = () => convertText(inputTextBox.value, outputText, shouldLog); //  manual override
+			document.getElementById('run').onclick = () => convertText(inputTextBox.value, outputText, dd.value, shouldLog); //  manual override
 
 			inputTextBox.addEventListener('keydown', (e) => {  // press enter, auto refreesh
 				if (e.key === 'Enter') {
-					convertText(inputTextBox.value, outputText, shouldLog);
+					const lang = dd.value;
+					convertText(inputTextBox.value, outputText, lang, shouldLog);
 					if (shouldLog) {
 						console.log("new line, auto run ");				
 					}
+				}
+			});
+
+			dd.addEventListener('change', (event) => { // refresh on lang change
+				const lang = dd.value;
+				convertText(inputTextBox.value, outputText, lang, shouldLog);
+				if (shouldLog) {
+					console.log("lang changed");				
 				}
 			});
 
@@ -40,12 +55,12 @@
 				const isAlpha = /^[a-zA-z]$/.test(e.key);
 				const isEnter = e.key == 'Enter';
 				const isSpace = e.key === ' ' || e.code === 'Space';
-				if (isAlpha || isEnter) { // auto focus the texbox if you type any letter
+				if (isAlpha || isEnter) {
 					inputTextBox.focus();
 					if (isAlpha || isSpace) {
-						e.preventDefault(); 
+						e.preventDefault();
 						const pos = inputTextBox.selectionStart ?? inputTextBox.value.length;
-						const charToInsert = isSpace ? ' ' : e.key; // space doesnt work in testing
+						const charToInsert = isSpace ? ' ' : e.key;
 						inputTextBox.value = inputTextBox.value.slice(0, pos) + charToInsert + inputTextBox.value.slice(pos);
 						inputTextBox.selectionStart = inputTextBox.selectionEnd = pos + 1;
 					}
@@ -54,7 +69,7 @@
 						console.log("new line auto render.");
 					}
 				}
-			});
+			});		
 		</script>
 	</body>
 </html>
