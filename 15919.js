@@ -171,7 +171,7 @@ const MALAYALAM_UNICODE = {
 	"tD": "\u0D26", // ദ
 	"tDh": "\u0D27", // ധ
 	"tN": "\u0D28", // ന
-	"t_N" : "\u0D29" ; //  	ഩ
+	"t_N" : "\u0D29", //  	ഩ
     	"tP": "\u0D2A",  // പ
     	"tPH": "\u0D2B", // ഫ
     	"tB": "\u0D2C",  // ബ
