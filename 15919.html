@@ -11,22 +11,26 @@
 		<script>
 			let idleTimer;
 			const delayIdle = 500; //adjust if you want faster or slower refreshes.
-			// const inputText = document.getElementById('inputText').value;
 			const inputTextBox = document.getElementById('inputText'); 
 			const outputText = "outputText";
+			const shouldLog = true;
 			inputTextBox.addEventListener('input', (e) => {
 				clearTimeout(idleTimer);
 				idleTimer = setTimeout(() => {
-					console.log("idle. trying run.");
-					convertText(inputTextBox.value, outputText); // dont touch this line, auto refresh and button stops working
+					if (shouldLog) {
+						console.log("idle. trying run.");				
+					}
+					convertText(inputTextBox.value, outputText, shouldLog); // the actual function
 				}, delayIdle);
 			});
-			document.getElementById('run').onclick = () => convertText(inputTextBox.value, outputText); //  manual override
+			document.getElementById('run').onclick = () => convertText(inputTextBox.value, outputText, shouldLog); //  manual override
 
-			inputTextBox.addEventListener('keydown', (e) => {
+			inputTextBox.addEventListener('keydown', (e) => {  // press enter, auto refreesh
 				if (e.key === 'Enter') {
 					convertText(inputTextBox.value, outputText);
-					console.log("new line auto render.");
+					if (shouldLog) {
+						console.log("new line, auto run ");				
+					}
 				}
 			});
 
@@ -36,16 +40,19 @@
 				const isAlpha = /^[a-zA-z]$/.test(e.key);
 				const isEnter = e.key == 'Enter';
 				const isSpace = e.key === ' ' || e.code === 'Space';
-				if (isAlpha || isEnter) {
+				if (isAlpha || isEnter) { // auto focus the texbox if you type any letter
 					inputTextBox.focus();
 					if (isAlpha || isSpace) {
-						e.preventDefault();
+						e.preventDefault(); 
 						const pos = inputTextBox.selectionStart ?? inputTextBox.value.length;
-						const charToInsert = isSpace ? ' ' : e.key; 
+						const charToInsert = isSpace ? ' ' : e.key; // space doesnt work in testing
 						inputTextBox.value = inputTextBox.value.slice(0, pos) + charToInsert + inputTextBox.value.slice(pos);
 						inputTextBox.selectionStart = inputTextBox.selectionEnd = pos + 1;
 					}
 					inputTextBox.focus();
+					if (shouldLog) {
+						console.log("new line auto render.");
+					}
 				}
 			});
 		</script>
