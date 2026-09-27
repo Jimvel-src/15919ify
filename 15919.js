@@ -204,6 +204,107 @@ const MALAYALAM_UNICODE = {
         	"t*K": "\u0D7F"   // ൿ   
 };
 
+const TAMIL_UNICODE = {
+    // swara-ksharangal (independent vowels at beginning of words)
+    "tA": "\u0B85",   // அ
+    "tAA": "\u0B86",  // ஆ
+    "tI": "\u0B87",   // இ
+    "tII": "\u0B88",  // ஈ
+    "tU": "\u0B89",   // உ
+    "tUU": "\u0B8A",  // ஊ
+    "tE": "\u0B8E",   // எ
+    "tEE": "\u0B8F",  // ஏ
+    "tAi": "\u0B90",  // ஐ
+    "tO": "\u0B92",   // ஒ
+    "tOO": "\u0B93",  // ஓ
+    "tAu": "\u0B94",  // ஔ
+
+    // "chinnangal" (dependent vowel signs)
+    "VOWEL_SIGNS": {
+        "tA": "",        // inherent "a"
+        "tAA": "\u0BBE", // ா
+        "tI": "\u0BBF",  // ி
+        "tII": "\u0BC0", // ீ
+        "tU": "\u0BC1",  // ு
+        "tUU": "\u0BC2", // ூ
+        "tE": "\u0BC6",  // ெ
+        "tEE": "\u0BC7", // ே
+        "tAi": "\u0BC8", // ை
+        "tO": "\u0BCA",  // ொ
+        "tOO": "\u0BCB", // ோ
+        "tAu": "\u0BCC"  // ௌ
+    },
+
+    // consonants (vyanjan-aksharangal)
+    "tK": "\u0B95",   // க
+    "tKh": "\u0B83" + "\u0B95", // ஃக
+    "tG": "\u0B95",   // க
+    "tGh": "\u0B83" + "\u0B95", // ஃக
+
+    "tC": "\u0B9A",   // ச
+    "tCh": "\u0B83" + "\u0B9A", // ஃச
+    "tJ": "\u0B9C",   // ஜ
+    "tJh": "\u0B83" + "\u0B9C", // ஃஜ
+
+    "t.T": "\u0B9F",  // ட
+    "t.TH": "\u0B83" + "\u0B9F", // ஃட
+    "t.D": "\u0B9F",  // ட
+    "t.Dh": "\u0B83" + "\u0B9F", // ஃட
+    "t.N": "\u0BA3",  // ண
+
+    "tT": "\u0BA4",   // த
+    "tTh": "\u0B83" + "\u0BA4", // ஃத
+    "tD": "\u0BA4",   // த
+    "tDh": "\u0B83" + "\u0BA4", // ஃத
+    "tN": "\u0BA8",   // ந
+    "t_N": "\u0BA9",  // ன
+
+    "tP": "\u0BAA",   // ப
+    "tPH": "\u0B83" + "\u0BAA", // ஃப
+    "tB": "\u0BAA",   // ப
+    "tBH": "\u0B83" + "\u0BAA", // ஃப
+    "tM": "\u0BAE",   // ம
+
+    "tY": "\u0BAF",   // ய
+    "tR": "\u0BB0",   // ர
+    "tL": "\u0BB2",   // ல
+    "tV": "\u0BB5",   // வ
+
+    "tS": "\u0BB6",   // ஶ
+    "t.S": "\u0BB7",  // ஷ
+    "tSH": "\u0BB8",  // ஸ
+    "tH": "\u0BB9",   // ஹ
+
+    "t.L": "\u0BB3",  // ள
+    "t_L": "\u0BB4",  // ழ
+    "t_R": "\u0BB1",  // ற
+
+    "t;N": "\u0B99",  // ங
+    "t~N": "\u0B9E",  // ஞ
+
+    // special symbols
+    "t;M": "\u0B82",  // ஂ
+    "t.H": "\u0B83",  // ஃ
+    "t^U": "\u0BCD",  // ்
+
+    // pulli / dead-consonant forms
+    // consonant + virama
+    "t*K": "\u0B95" + "\u0BCD",   // க்
+    "t*C": "\u0B9A" + "\u0BCD",   // ச்
+    "t*J": "\u0B9C" + "\u0BCD",   // ஜ்
+    "t*.T": "\u0B9F" + "\u0BCD",  // ட்
+    "t*T": "\u0BA4" + "\u0BCD",   // த்
+    "t*P": "\u0BAA" + "\u0BCD",   // ப்
+    "t*M": "\u0BAE" + "\u0BCD",   // ம்
+    "t*Y": "\u0BAF" + "\u0BCD",   // ய்
+    "t*R": "\u0BB0" + "\u0BCD",   // ர்
+    "t*L": "\u0BB2" + "\u0BCD",   // ல்
+    "t*V": "\u0BB5" + "\u0BCD",   // வ்
+    "t*S": "\u0BB6" + "\u0BCD",   // ஶ்
+    "t*.S": "\u0BB7" + "\u0BCD",  // ஷ்
+    "t*SH": "\u0BB8" + "\u0BCD",  // ஸ்
+    "t*H": "\u0BB9" + "\u0BCD"    // ஹ்
+};
 
 function tokensToMalayalam(tokens) {
 	let result= "";
@@ -254,15 +355,92 @@ function tokensToMalayalam(tokens) {
 	return result;
 }
 
-function convertText(inputText, outputDOM, shouldLog) {
+function tokensToTamil(tokens) {
+    let result = "";
+
+    for (const item of tokens) {
+        if (item.type === "SPACE") {
+            result += " ";
+            continue; // space is pushed through
+        }
+
+        if (item.type === "UNKNOWN") {
+            result += item.raw;
+            continue; // push unknown input through
+        }
+
+        const { consonant, vowel } = item;
+
+        // case one: independent vowels
+        if (!consonant && vowel) {
+            result += TAMIL_UNICODE[vowel] || "";
+            continue;
+        }
+
+        // case two: starts with consonant
+        if (consonant) {
+            const baseConsonant = TAMIL_UNICODE[consonant] || "";
+
+            // consonant + pulli
+            if (vowel && vowel === "t^U") {
+                result += baseConsonant + "\u0BCD";
+            }
+
+            // consonant + dependent vowel
+            else if (vowel) {
+                const vowelThing =
+                    TAMIL_UNICODE.VOWEL_SIGNS[vowel] ?? "";
+
+                result += baseConsonant + vowelThing;
+            }
+
+            // consonant with no vowel
+            else {
+                // anusvaram / aytham
+                if (consonant === "t;M" || consonant === "t.H") {
+                    result += baseConsonant;
+                }
+
+                // t* consonants already contain their pulli
+                else if (consonant.startsWith("t*")) {
+                    result += baseConsonant;
+                }
+
+                // normal consonant gets Tamil pulli
+                else {
+                    result += baseConsonant + "\u0BCD";
+                }
+            }
+        }
+    }
+
+    return result;
+}
+
+function convertText(inputText, outputDOM, langchoice, shouldLog) {
 	const tokenized = scanAndParse(inputText);
-	const finalOut = tokensToMalayalam(tokenized);
-	if (document.getElementById(outputDOM)) {
-		document.getElementById(outputDOM).innerHTML = finalOut;
-		if (shouldLog) { console.log("run successful."); }
+	if (langchoice === "mal") {
+		const finalOut = tokensToMalayalam(tokenized);
+		if (document.getElementById(outputDOM)) {
+			document.getElementById(outputDOM).innerHTML = finalOut;
+			if (shouldLog) { console.log("run successful."); }
+		}
+		else {
+			console.warn("target element " + outputDOM + " not found")
+		}
+	}
+	else if (langchoice === "tamil"){
+		const finalOut = tokensToTamil(tokenized);
+		if (document.getElementById(outputDOM)) {
+			document.getElementById(outputDOM).innerHTML = finalOut;
+			if (shouldLog) { console.log("run successful."); }
+		}
+		else {
+			console.warn("target element " + outputDOM + " not found")
+		}
 	}
 	else {
-		console.warn("target element " + outputDOM + " not found")
+		window.alert("Choose a script to convert to..")	
 	}
 }
 //:w:w:w
