@@ -285,25 +285,7 @@ const TAMIL_UNICODE = {
     // special symbols
     "t;M": "\u0B82",  // ஂ
     "t.H": "\u0B83",  // ஃ
-    "t^U": "\u0BCD",  // ்
-
-    // pulli / dead-consonant forms
-    // consonant + virama
-    "t*K": "\u0B95" + "\u0BCD",   // க்
-    "t*C": "\u0B9A" + "\u0BCD",   // ச்
-    "t*J": "\u0B9C" + "\u0BCD",   // ஜ்
-    "t*.T": "\u0B9F" + "\u0BCD",  // ட்
-    "t*T": "\u0BA4" + "\u0BCD",   // த்
-    "t*P": "\u0BAA" + "\u0BCD",   // ப்
-    "t*M": "\u0BAE" + "\u0BCD",   // ம்
-    "t*Y": "\u0BAF" + "\u0BCD",   // ய்
-    "t*R": "\u0BB0" + "\u0BCD",   // ர்
-    "t*L": "\u0BB2" + "\u0BCD",   // ல்
-    "t*V": "\u0BB5" + "\u0BCD",   // வ்
-    "t*S": "\u0BB6" + "\u0BCD",   // ஶ்
-    "t*.S": "\u0BB7" + "\u0BCD",  // ஷ்
-    "t*SH": "\u0BB8" + "\u0BCD",  // ஸ்
-    "t*H": "\u0BB9" + "\u0BCD"    // ஹ்
+    "t^U": "\u0BCD"  // ்
 };
 
 function tokensToMalayalam(tokens) {
