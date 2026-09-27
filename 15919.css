@@ -42,7 +42,7 @@ body {
 }
 #run {
 	margin-right:1vw;
-	margin-left:auto;
+	margin-left: 1vw;
 	padding: 0.4em 1.1em;
 	background-color:#282a35;
   	color: #ffd08a;
@@ -117,4 +117,17 @@ body {
   	font-style: normal;
   	font-variation-settings:
     	"wdth" 100;
+}
+
+#langdd {
+    	background-color: #282a35;
+	border : none;
+	border-radius : 4px;
+	color: white;
+	padding: 0.4em 1.1em;
+	margin-right:1vw;
+	margin-left:auto;
+  	color: #ffd08a;
+  	font-family: 'JetBrains Mono', monospace;
+  	font-size: 1rem;
 }
