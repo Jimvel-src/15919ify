@@ -15,8 +15,8 @@ const STANDARD_DICT = {
     "c": "tC", "ch": "tCh", "j": "tJ", "jh": "tJh", 
     "t": "tT", "th": "tTh", "d": "tD", "dh": "tDh", 
     "n": "tN", "p": "tP", "ph": "tPH", "b": "tB", 
-    "bh": "tBH", "m": "tM", "sh": "tSH", "l": "tL", 
-    "y": "tY", "r": "tR", "s": "tS", "h": "tH"
+    "bh": "tBH", "m": "tM", "sh": "tS", "l": "tL", 
+    "y": "tY", "r": "tR", "s": "tSH", "h": "tH"
 };
 
 const PUNCT_DICT = {
@@ -288,6 +288,97 @@ const TAMIL_UNICODE = {
     "t^U": "\u0BCD"  // ்
 };
 
+const KANNADA_UNICODE = {
+    // swara-aksharagaLu (independent vowels at beginning of words)
+    "tA": "\u0C85",   // ಅ
+    "tAA": "\u0C86",  // ಆ
+    "tI": "\u0C87",   // ಇ
+    "tII": "\u0C88",  // ಈ
+    "tU": "\u0C89",   // ಉ
+    "tUU": "\u0C8A",  // ಊ
+    "t,R": "\u0C8B",  // ಋ
+    "t,Rr": "\u0CE0", // ೠ
+    "t,L": "\u0C8C",  // ಌ
+    "t,Ll": "\u0CE1", // ೡ
+    "tE": "\u0C8E",   // ಎ
+    "tEE": "\u0C8F",  // ಏ
+    "tAi": "\u0C90",  // ಐ
+    "tO": "\u0C92",   // ಒ
+    "tOO": "\u0C93",  // ಓ
+    "tAu": "\u0C94",  // ಔ
+
+    // "chinnagaLu" (dependent vowel signs attached to consonants)
+    "VOWEL_SIGNS": {
+        "tA": "",       // no sign: inherent "a"
+        "tAA": "\u0CBE", // ಾ
+        "tI": "\u0CBF",  // ಿ
+        "tII": "\u0CC0", // ೀ
+        "tU": "\u0CC1",  // ು
+        "tUU": "\u0CC2", // ೂ
+        "t,R": "\u0CC3", // ೃ
+        "t,Rr": "\u0CC4", // ೄ
+        "t,L": "\u0CE2", // ೢ
+        "t,Ll": "\u0CE3", // ೣ
+        "tE": "\u0CC6",  // ೆ
+        "tEE": "\u0CC7", // ೇ
+        "tAi": "\u0CC8", // ೈ
+        "tO": "\u0CCA",  // ೊ
+        "tOO": "\u0CCB", // ೋ
+        "tAu": "\u0CCC"  // ೌ
+    },
+
+    // consonants (vyanjanagaLu)
+    "tK": "\u0C95",  // ಕ
+    "tKh": "\u0C96", // ಖ
+    "tG": "\u0C97",  // ಗ
+    "tGh": "\u0C98", // ಘ
+
+    "tC": "\u0C9A",  // ಚ
+    "tCh": "\u0C9B", // ಛ
+    "tJ": "\u0C9C",  // ಜ
+    "tJh": "\u0C9D", // ಝ
+
+    "t.T": "\u0C9F",  // ಟ
+    "t.TH": "\u0CA0", // ಠ
+    "t.D": "\u0CA1",  // ಡ
+    "t.Dh": "\u0CA2", // ಢ
+    "t.N": "\u0CA3",  // ಣ
+
+    "tT": "\u0CA4",  // ತ
+    "tTh": "\u0CA5", // ಥ
+    "tD": "\u0CA6",  // ದ
+    "tDh": "\u0CA7", // ಧ
+    "tN": "\u0CA8",  // ನ
+    "t_N": "", // _n doesnt exists here
+
+    "tP": "\u0CAA",  // ಪ
+    "tPH": "\u0CAB", // ಫ
+    "tB": "\u0CAC",  // ಬ
+    "tBH": "\u0CAD", // ಭ
+    "tM": "\u0CAE",  // ಮ
+
+    "tY": "\u0CAF",  // ಯ
+    "tR": "\u0CB0",  // ರ
+    "tL": "\u0CB2",  // ಲ
+    "tV": "\u0CB5",  // ವ
+
+    "tS": "\u0CB6",  // ಶ
+    "t.S": "\u0CB7", // ಷ
+    "tSH": "\u0CB8", // ಸ
+    "tH": "\u0CB9",  // ಹ
+
+    "t.L": "\u0CB3", // ಳ
+    "t_L": "\u0CDE", // ೞ
+    "t_R": "\u0CB1", // ಱ
+    "t;N": "\u0C99", // ಙ
+    "t~N": "\u0C9E", // ಞ
+
+    // special symbols
+    "t;M": "\u0C82", // Anusvara (ಂ)
+    "t.H": "\u0C83", // Visarga (ಃ)
+    "t^U": "\u0CCD", // Virama / Halant (್)
+};
+
 function tokensToMalayalam(tokens) {
 	let result= "";
 	for (const item of tokens) {
@@ -353,7 +444,7 @@ function tokensToTamil(tokens) {
 
         const { consonant, vowel } = item;
 
-        // case one: independent vowels
+        // case one: independent vowelskannada
         if (!consonant && vowel) {
             result += TAMIL_UNICODE[vowel] || "";
             continue;
@@ -383,11 +474,6 @@ function tokensToTamil(tokens) {
                     result += baseConsonant;
                 }
 
-                // t* consonants already contain their pulli
-                else if (consonant.startsWith("t*")) {
-                    result += baseConsonant;
-                }
-
                 // normal consonant gets Tamil pulli
                 else {
                     result += baseConsonant + "\u0BCD";
@@ -398,6 +484,54 @@ function tokensToTamil(tokens) {
 
     return result;
 }
+
+function tokensToKannada(tokens) {
+	let result= "";
+	for (const item of tokens) {
+		if (item.type === "SPACE") {
+			result = result + " ";
+			continue; // space is pushed through
+		}
+		if (item.type === "UNKNOWN") {
+			result = result + item.raw;
+			continue; // push unknown input through
+		}
+		const {consonant, vowel} = item;
+
+		// case ein: independant vowels
+		if (!consonant && vowel) {
+			result += KANNADA_UNICODE[vowel] || "";
+			continue;
+		}
+		
+		//case zwei: start w/ consonant
+		if (consonant) {
+			if (vowel && vowel=== "t^U") { // if cons + vowel
+				const baseConsonant = KANNADA_UNICODE[consonant] || "";
+				const halant = "\u0CCD"
+				result += baseConsonant + halant;
+			}
+			else if (vowel) { 
+				const baseConsonant = KANNADA_UNICODE[consonant] || "";
+				const vowelThing = KANNADA_UNICODE.VOWEL_SIGNS[vowel] ?? "";
+				result += baseConsonant + vowelThing;
+			}
+			else { 
+				if (consonant === "t;M" || consonant === "t.H") {
+					result += KANNADA_UNICODE[consonant] || "";
+				}
+				else {
+					const halant = "\u0CCD"
+					const baseConsonant = KANNADA_UNICODE[consonant] || "";
+					result += baseConsonant + halant;
+				}
+			}
+		}
+	}
+	return result;
+}
+
+
 
 function convertText(inputText, outputDOM, langchoice, shouldLog) {
 	const tokenized = scanAndParse(inputText);
@@ -421,6 +555,17 @@ function convertText(inputText, outputDOM, langchoice, shouldLog) {
 			console.warn("target element " + outputDOM + " not found")
 		}
 	}
+	else if (langchoice === "kannada"){
+		const finalOut = tokensToKannada(tokenized);
+		if (document.getElementById(outputDOM)) {
+			document.getElementById(outputDOM).innerHTML = finalOut;
+			if (shouldLog) { console.log("run successful."); }
+		}
+		else {
+			console.warn("target element " + outputDOM + " not found")
+		}
+	}
+
 	else {
 		window.alert("Choose a script to convert to..")	
 	}
