@@ -66,52 +66,6 @@ sounds where applicable.
 | `_l` | `ழ` |
 | `_r` | `ற` |
 
-### Pulli / Dead Consonants
-
-Tamil has no separate chillu letters. A consonant without a vowel is
-normally represented using the pulli (`்`). In this typing system, the
-`*` prefix is used to explicitly represent such consonants.
-
-|7 bit ISO 15919|Tamil Character equivalent|
-|---------------|--------------------------|
-| `*k` | `க்` |
-| `*kh` | `ஃக்` |
-| `*g` | `க்` |
-| `*gh` | `ஃக்` |
-| `*;n` | `ங்` |
-| `*c` | `ச்` |
-| `*ch` | `ஃச்` |
-| `*j` | `ஜ்` |
-| `*jh` | `ஃஜ்` |
-| `*~n` | `ஞ்` |
-| `*.t` | `ட்` |
-| `*.th` | `ஃட்` |
-| `*.d` | `ட்` |
-| `*.dh` | `ஃட்` |
-| `*.n` | `ண்` |
-| `*t` | `த்` |
-| `*th` | `ஃத்` |
-| `*d` | `த்` |
-| `*dh` | `ஃத்` |
-| `*n` | `ந்` |
-| `*_n` | `ன்` |
-| `*p` | `ப்` |
-| `*ph` | `ஃப்` |
-| `*b` | `ப்` |
-| `*bh` | `ஃப்` |
-| `*m` | `ம்` |
-| `*y` | `ய்` |
-| `*r` | `ர்` |
-| `*l` | `ல்` |
-| `*v` | `வ்` |
-| `*s` | `ஶ்` |
-| `*.s` | `ஷ்` |
-| `*sh` | `ஸ்` |
-| `*h` | `ஹ்` |
-| `*.l` | `ள்` |
-| `*_l` | `ழ்` |
-| `*_r` | `ற்` |
-
 ### Common Conjuncting Letters
 
 Tamil does not form conjuncts in exactly the same way as Malayalam.
