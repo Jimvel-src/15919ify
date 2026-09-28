@@ -13,7 +13,7 @@ Try the tool out [here](https://sox.nekoweb.org/15919.html)
 ## Langauges supported
 - [X] Malayalam
 - [X] Tamil
-- [ ] Kannada
+- [X] Kannada
 
 ## Syntax and Typing
 For a basic idea on how this system works, refer to the following tables for typing instructions based on the modified [7Bit ISO 15919](https://en.wikipedia.org/wiki/ISO_15919)
