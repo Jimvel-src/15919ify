@@ -19,4 +19,5 @@ Try the tool out [here](https://sox.nekoweb.org/15919.html)
 For a basic idea on how this system works, refer to the following tables for typing instructions based on the modified [7Bit ISO 15919](https://en.wikipedia.org/wiki/ISO_15919)
 * Refer to [Malayalam section](malayalam.md) for instructions on typing Malayalam
 * Refer to [Tamil section](tamil.md) for instructions on typing Tamil
+* Refer to [Kannada section](kannada.md) for instructions on typing Kannada
 
