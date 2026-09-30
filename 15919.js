@@ -36,10 +36,22 @@ function isChill(char) {
 
 const MASTER_DICT = { ...STANDARD_DICT, ...PUNCT_DICT };
 
-function parseStandardChunk(text, startIndex) {
+function parseStandardChunk(text, startIndex, autoAnu) {
 	text = text.toLowerCase()
 	let j = startIndex;
 	if (j >= text.length) return null;
+	const userEndSentance = text[j+1] === ' ' || text[j+1] === '\n' || PUNCTUATION.has(text[j+1]) ;
+
+	if (text[j] === 'm' && userEndSentance && autoAnu) {
+		return {
+			token : {
+				consonant : MASTER_DICT[";m"],
+				vowel : null,
+				raw : text.slice(startIndex, j+1)
+			}, 
+			nextIndex : j+1
+		};
+	}
 
 	let consonantKey = "";
 	let vowelKey = "";
@@ -84,7 +96,7 @@ function parseStandardChunk(text, startIndex) {
     	};
 }
 
-function scanAndParse(text) {
+function scanAndParse(text, autoAnu) {
 	const input = text.toLowerCase();
     	const tokens = [];
     	let i = 0;
@@ -97,7 +109,7 @@ function scanAndParse(text) {
             		continue;
         	}
 
-        	const match = parseStandardChunk(input, i);
+        	const match = parseStandardChunk(input, i, autoAnu);
 
         	if (match) {
             		tokens.push(match.token);
@@ -534,8 +546,11 @@ function tokensToKannada(tokens) {
 
 
 function convertText(inputText, outputDOM, langchoice, shouldLog) {
-	const tokenized = scanAndParse(inputText);
+	// const tokenized = scanAndParse(inputText);
+	//const true = true; cant believe i wrote that bruh
+	// const false = false;
 	if (langchoice === "mal") {
+		const tokenized = scanAndParse(inputText, true);
 		const finalOut = tokensToMalayalam(tokenized);
 		if (document.getElementById(outputDOM)) {
 			document.getElementById(outputDOM).innerHTML = finalOut;
@@ -546,6 +561,7 @@ function convertText(inputText, outputDOM, langchoice, shouldLog) {
 		}
 	}
 	else if (langchoice === "tamil"){
+		const tokenized = scanAndParse(inputText, false);
 		const finalOut = tokensToTamil(tokenized);
 		if (document.getElementById(outputDOM)) {
 			document.getElementById(outputDOM).innerHTML = finalOut;
@@ -556,6 +572,7 @@ function convertText(inputText, outputDOM, langchoice, shouldLog) {
 		}
 	}
 	else if (langchoice === "kannada"){
+		const tokenized = scanAndParse(inputText, true);
 		const finalOut = tokensToKannada(tokenized);
 		if (document.getElementById(outputDOM)) {
 			document.getElementById(outputDOM).innerHTML = finalOut;
