@@ -1,5 +1,5 @@
 import {
-	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA
+	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU
 } from "./dicts.js";
 
 // console.log("tst: frmwrk LOADED");
@@ -253,49 +253,78 @@ function tokensToKannada(tokens) {
 	return result;
 }
 
+function tokensToTelugu(tokens) {
+	let result= "";
+	for (const item of tokens) {
+		if (item.type === "SPACE") {
+			result = result + " ";
+			continue; // space is pushed through
+		}
+		if (item.type === "UNKNOWN") {
+			result = result + item.raw;
+			continue; // push unknown input through
+		}
+		const {consonant, vowel} = item;
 
 
-function convertText(inputText, outputDOM, langchoice, shouldLog) {
-	// const tokenized = scanAndParse(inputText);
-	//const true = true; cant believe i wrote that bruh
-	// const false = false;
+		// independant vowels case
+		if (!consonant && vowel) {
+			result += TELUGU[vowel] || "";
+			continue;
+		}
+
+		if (consonant) { // init w/ consnant
+			if (vowel && vowel=== "t^U") { // explicit halant
+				const baseConsonant = TELUGU[consonant] || "";
+				const halant = "\u0C4D"
+				result += baseConsonant + halant;
+			}
+			else if (vowel) { 
+				const baseConsonant = TELUGU[consonant] || "";
+				const vowelThing = TELUGU.VOWEL_SIGNS[vowel] ?? "";
+				result += baseConsonant + vowelThing;
+			}
+			else { 
+				if (consonant === "t;M" || consonant === "t.H") {
+					result += TELUGU[consonant] || "";
+				}
+				else {
+					const halant = "\u0C4D"
+					const baseConsonant = TELUGU[consonant] || "";
+					result += baseConsonant + halant;
+				}
+			}
+		}
+
+	}
+	return result;
+}
+
+
+function convertText(inputText, langchoice) {
+	let finalOut;
 	if (langchoice === "mal") {
 		const tokenized = scanAndParse(inputText, true);
-		const finalOut = tokensToMalayalam(tokenized);
-		if (document.getElementById(outputDOM)) {
-			document.getElementById(outputDOM).innerHTML = finalOut;
-			if (shouldLog) { console.log("run successful."); }
-		}
-		else {
-			console.warn("target element " + outputDOM + " not found")
-		}
+		finalOut = tokensToMalayalam(tokenized);
 	}
 	else if (langchoice === "tamil"){
 		const tokenized = scanAndParse(inputText, false);
-		const finalOut = tokensToTamil(tokenized);
-		if (document.getElementById(outputDOM)) {
-			document.getElementById(outputDOM).innerHTML = finalOut;
-			if (shouldLog) { console.log("run successful."); }
-		}
-		else {
-			console.warn("target element " + outputDOM + " not found")
-		}
+		finalOut = tokensToTamil(tokenized);
 	}
 	else if (langchoice === "kannada"){
 		const tokenized = scanAndParse(inputText, true);
-		const finalOut = tokensToKannada(tokenized);
-		if (document.getElementById(outputDOM)) {
-			document.getElementById(outputDOM).innerHTML = finalOut;
-			if (shouldLog) { console.log("run successful."); }
-		}
-		else {
-			console.warn("target element " + outputDOM + " not found")
-		}
+		finalOut = tokensToKannada(tokenized);
+	}
+
+	else if (langchoice === "telugu"){
+		const tokenized = scanAndParse(inputText, true);
+		finalOut = tokensToTelugu(tokenized);
 	}
 
 	else {
-		window.alert("Choose a script to convert to..")	
+		throw new Error("Unknown output script: " + langchoice);
 	}
+	return finalOut;	
 }
 //:w:w:iw
 //
