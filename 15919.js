@@ -1,7 +1,8 @@
-
 import {
 	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA
-} from "dicts.js";
+} from "./dicts.js";
+
+// console.log("tst: frmwrk LOADED");
 
 function isVowel(char) {
 	return VOWELS.has(char);
@@ -296,4 +297,6 @@ function convertText(inputText, outputDOM, langchoice, shouldLog) {
 		window.alert("Choose a script to convert to..")	
 	}
 }
-//:w:w:w
+//:w:w:iw
+//
+window.convertText = convertText;
