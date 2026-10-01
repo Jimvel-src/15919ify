@@ -301,30 +301,39 @@ function tokensToTelugu(tokens) {
 }
 
 
-function convertText(inputText, langchoice) {
-	let finalOut;
-	if (langchoice === "mal") {
-		const tokenized = scanAndParse(inputText, true);
-		finalOut = tokensToMalayalam(tokenized);
-	}
-	else if (langchoice === "tamil"){
-		const tokenized = scanAndParse(inputText, false);
-		finalOut = tokensToTamil(tokenized);
-	}
-	else if (langchoice === "kannada"){
-		const tokenized = scanAndParse(inputText, true);
-		finalOut = tokensToKannada(tokenized);
-	}
+const LANGUAGE_REGISTRY = {
+    mal: {
+        autoAnu: true,
+        converter: tokensToMalayalam
+    },
 
-	else if (langchoice === "telugu"){
-		const tokenized = scanAndParse(inputText, true);
-		finalOut = tokensToTelugu(tokenized);
-	}
+    tamil: {
+        autoAnu: false,
+        converter: tokensToTamil
+    },
 
-	else {
-		throw new Error("Unknown output script: " + langchoice);
-	}
-	return finalOut;	
+    kannada: {
+        autoAnu: true,
+        converter: tokensToKannada
+    },
+
+    telugu: {
+        autoAnu: true,
+        converter: tokensToTelugu
+    }
+};
+
+
+function convertText(inputText, lang) {
+    const language = LANGUAGE_REGISTRY[lang];
+
+    if (!language) {
+        throw new Error("Unknown output script: " + lang);
+    }
+
+    const tokenea = scanAndParse(inputText, language.autoAnu);
+
+    return language.converter(tokenea);
 }
 //:w:w:iw
 //
