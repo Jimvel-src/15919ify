@@ -1,5 +1,5 @@
 import {
-	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU
+	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI
 } from "./dicts.js";
 
 // console.log("tst: frmwrk LOADED");
@@ -285,7 +285,7 @@ function tokensToTelugu(tokens) {
 				result += baseConsonant + vowelThing;
 			}
 			else { 
-				if (consonant === "t;M" || consonant === "t.H") {
+				if (consonant === "t;M" || consonant === "t.H" || consonant === "t^N" || consonant === "t~M") {
 					result += TELUGU[consonant] || "";
 				}
 				else {
@@ -301,26 +301,81 @@ function tokensToTelugu(tokens) {
 }
 
 
+function tokensToDevanagari(tokens) {
+    let result = "";
+
+    for (const item of tokens) {
+        if (item.type === "SPACE") {
+            result += " ";
+            continue;
+        }
+
+        if (item.type === "UNKNOWN") {
+            result += item.raw;
+            continue;
+        }
+
+        const { consonant, vowel } = item;
+
+        // Independent vowels
+        if (!consonant && vowel) {
+            result += DEVANAGARI[vowel] || "";
+            continue;
+        }
+
+        // Start with consonant
+        if (consonant) {
+            if (vowel && vowel === "t^U") {
+                // Explicit virama
+                result += DEVANAGARI[consonant] || "";
+                result += "\u094D";
+            }
+            else if (vowel) {
+                const baseConsonant = DEVANAGARI[consonant] || "";
+                const vowelSign = DEVANAGARI.VOWEL_SIGNS[vowel] ?? "";
+                result += baseConsonant + vowelSign;
+            }
+            else {
+                if (
+                    consonant === "t;M" ||
+                    consonant === "t.H" ||
+                    consonant === "t^N" ||
+                    consonant === "t~M"
+                ) {
+                    result += DEVANAGARI[consonant] || "";
+                }
+                else {
+                    const baseConsonant = DEVANAGARI[consonant] || "";
+                    result += baseConsonant + "\u094D";
+                }
+            }
+        }
+    } 
+
+    return result;
+}
+
 const LANGUAGE_REGISTRY = {
-    mal: {
-        autoAnu: true,
-        converter: tokensToMalayalam
-    },
-
-    tamil: {
-        autoAnu: false,
-        converter: tokensToTamil
-    },
-
-    kannada: {
-        autoAnu: true,
-        converter: tokensToKannada
-    },
-
-    telugu: {
-        autoAnu: true,
-        converter: tokensToTelugu
-    }
+	malayalam : {
+        	autoAnu: true,
+        	converter: tokensToMalayalam
+    	},
+    	tamil : {
+        	autoAnu: false,
+        	converter: tokensToTamil
+    	},
+   	kannada : {
+        	autoAnu: true,
+        	converter: tokensToKannada
+    	},
+    	telugu : {
+        	autoAnu: true,
+        	converter: tokensToTelugu
+    	}, 
+	devanagari : {
+		autoAnu: false,
+		converter: tokensToDevanagari
+	}
 };
 
 
@@ -335,6 +390,26 @@ function convertText(inputText, lang) {
 
     return language.converter(tokenea);
 }
+
+
+export function tokenize(inputText, options = {}) {
+    const autoAnu = options.autoAnu ?? false;
+    return scanAndParse(inputText, autoAnu);
+}
+
 //:w:w:iw
-//
-window.convertText = convertText;
+
+export { 
+  convertText, 
+  scanAndParse, 
+  LANGUAGE_REGISTRY 
+};
+
+// fallback for legacy CJS (Node.js) & global Browser window
+if (typeof exports === 'object' && typeof module !== 'undefined') {
+    module.exports = { convertText, scanAndParse, registerLanguage, LANGUAGE_REGISTRY };
+} else if (typeof window !== 'undefined') {
+    // window.15919ify = { convertText, scanAndParse, registerLanguage, LANGUAGE_REGISTRY };
+    window.convertText = convertText; // backwards compatibility for reference html 
+}
+
