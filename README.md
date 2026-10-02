@@ -3,9 +3,10 @@ An open-source web utility designed to take in text in 7 Bit ISO 15919 format an
 Try the tool out [here](https://sox.nekoweb.org/15919.html)
 
 ## File structure
-* `15919.js` - The core parsing engine and transliteration framework. Currently only supports mapping to Malayalam, Tamil and Kannada but can be modified to accomodate other languages
+* `15919.js` - The core parsing engine and transliteration framework. Currently only supports mapping to Malayalam, Tamil, Kannada, Telugu and Devanagiri but can be modified to accomodate other languages
 * `15919.html` - An example reference implemtation showing how it could be used in a bare-bones way, with live debounced input listeners and manual override triggers.
 * `15919.css` - CSS for my page I made open source, cuz good practice
+* `dicts.js` - All UNICODE mappings and other DICTS have been moved to this file after v1.6.1
 
 ## Features
 * Scans input strings character-by-character, intelligently grouping multi-character consonant and vowel clusters (up to 3-character keys)
@@ -20,4 +21,6 @@ For a basic idea on how this system works, refer to the following tables for typ
 * Refer to [Malayalam section](malayalam.md) for instructions on typing Malayalam
 * Refer to [Tamil section](tamil.md) for instructions on typing Tamil
 * Refer to [Kannada section](kannada.md) for instructions on typing Kannada
+* Refer to [Telugu section](telugu.md) for instructions on typing Telugu
+* Refer to [Devanagari section](devanagari.md) for instructions on typing Hindi, Nepali and other languages which use Devanagiri
 
