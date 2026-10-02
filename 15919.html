@@ -1,4 +1,4 @@
-<html>
+	<html>
 	<head>
 		<title>15919+</title>
 		<script type="module" src="15919.js" defer></script>
@@ -10,8 +10,9 @@
 			<select id="langdd">
 				<option value="mal">Malayalam</option>
 				<option value="tamil">Tamil</option>
-				<option value="Kannada">Kannada</option>
+				<option value="kannada">Kannada</option>
 				<option value="telugu">Telugu</option>
+				<option value="devanagari">Devanagari</option>
 			</select>
 		<button id="run" class="run">manual refresh</button>
 		<script>
@@ -27,19 +28,19 @@
 					if (shouldLog) {console.log("idle. trying run.");}
 					const lang = dd.value;
 					try {
-						document.getElementById(outputDOM).innerHTML = convertText(inputTextBox.value, lang);// the actual function
+						document.getElementById(outputDOM).innerText = convertText(inputTextBox.value, lang);// the actual function
 						if (shouldLog) {console.log("success");}
 					}
 					catch (error ) {console.error(error);}
 				}, delayIdle);
 			});
-			document.getElementById('run').onclick = () => document.getElementById(outputDOM).innerHTML = convertText(inputTextBox.value, dd.value);//  manual override
+			document.getElementById('run').onclick = () => document.getElementById(outputDOM).innerText = convertText(inputTextBox.value, dd.value);//  manual override
 
 			inputTextBox.addEventListener('keydown', (e) => {  // press enter, auto refreesh
 				if (e.key === 'Enter') {
 					const lang = dd.value;
 					try {
-						document.getElementById(outputDOM).innerHTML = convertText(inputTextBox.value, lang);								    if (shouldLog) {
+						document.getElementById(outputDOM).innerText = convertText(inputTextBox.value, lang);								    if (shouldLog) {
 							console.log("new line run");				
 						}
 					}
@@ -50,7 +51,7 @@
 			dd.addEventListener('change', (event) => { // refresh on lang change
 				const lang = dd.value;
 				try {
-					document.getElementById(outputDOM).innerHTML = convertText(inputTextBox.value, lang);								    if (shouldLog) {
+					document.getElementById(outputDOM).innerText = convertText(inputTextBox.value, lang);								    if (shouldLog) {
 						console.log("lang change run");				
 					}
 				}
