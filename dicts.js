@@ -18,21 +18,20 @@ export const STANDARD_DICT = {
     "y": "tY", "r": "tR", "s": "tSH", "h": "tH",
 
 	// extras for fixing shi 
-	"w":"tV"
+	"w":"tW"
 };
 
 export const PUNCT_DICT = {
     ",r": "t,R", ",rr": "t,Rr", ",l": "t,L", ",ll": "t,Ll",
     ";m": "t;M", ".h": "t.H", ";n": "t;N", "~n": "t~N", ".n": "t.N",
     "_r": "t_R", "_t": "t_T", "_n": "t_N", "_l": "t_L",
-    ".l": "t.L", "v": "tV", ".s": "t.S", "'": "t'", "^u": "t^U", "~m": "t~M",  "^n" :"t^N",
+    ".l": "t.L", "v": "tV", ".s": "t.S", "'": "t'", "^u": "t^U", "~m": "t~M",  "^n" :"t^N", "^c" : "t^C", "_k":"t_K", "z" : "tZ", "_h": "t_H", "^h" : "t^H", "^c" : "t^C", "^ch" :  "t^CH",".r" : "t.R", ".rh" : "t.RH", ";y" : "t;Y", "^r" : "t^R", "q":"tQ", "_kh":"t_KH", ".g":"t.G", "^z":"t^Z", "f":"tF" 
 	".t":"t.T", ".th": "t.TH", ".d":"t.D", ".dh": "t.Dh",
 	"*.n":"t*.N", "*n":"t*N", "*r":"t*R", "*l": "t*L",  "*.l": "t*.L", "*k": "t*K" // really should organise this
 	
 };
 
 export const CHILLS = new Set(["t*.N", "t*N", "t*R", "t*L", "t*.L", "t*K"]);
-
 
 export const MASTER_DICT = { ...STANDARD_DICT, ...PUNCT_DICT };
 
@@ -228,7 +227,7 @@ export const TAMIL = {
 
     // special symbols
     "t;M": "\u0B82",  // ஂ
-    "t.H": "\u0B83",  // ஃ
+    "t_K": "\u0B83",  // ஃ
     "t^U": "\u0BCD",  // ்
 
 	"t~M": "",  "t^N":""
@@ -349,21 +348,21 @@ export const TELUGU = {
 
     // Dependent vowel signs
 	 "VOWEL_SIGNS": {
-    "tAA_sign": "\u0C3E",  // ా
-    "tI_sign": "\u0C3F",   // ి
-    "tII_sign": "\u0C40",  // ీ
-    "tU_sign": "\u0C41",   // ు
-    "tUU_sign": "\u0C42",  // ూ
-    "t,R_sign": "\u0C43",  // ృ
-    "t,Rr_sign": "\u0C44", // ౄ
-    "t,L_sign": "\u0C62",  // ౢ
-    "t,Ll_sign": "\u0C63", // ౣ
-    "tE_sign": "\u0C46",   // ె
-    "tEE_sign": "\u0C47",  // ే
-    "tAi_sign": "\u0C48",  // ై
-    "tO_sign": "\u0C4A",   // ొ
-    "tOO_sign": "\u0C4B",  // ో
-    "tAu_sign": "\u0C4C",  // ౌ
+    "tAA": "\u0C3E",  // ా
+    "tI": "\u0C3F",   // ి
+    "tII": "\u0C40",  // ీ
+    "tU": "\u0C41",   // ు
+    "tUU": "\u0C42",  // ూ
+    "t,R": "\u0C43",  // ృ
+    "t,Rr": "\u0C44", // ౄ
+    "t,L": "\u0C62",  // ౢ
+    "t,Ll": "\u0C63", // ౣ
+    "tE": "\u0C46",   // ె
+    "tEE": "\u0C47",  // ే
+    "tAi": "\u0C48",  // ై
+    "tO": "\u0C4A",   // ొ
+    "tOO": "\u0C4B",  // ో
+    "tAu": "\u0C4C",  // ౌ
 	},
     // Consonants
     "tK": "\u0C15",    // క
@@ -408,15 +407,134 @@ export const TELUGU = {
     "tH": "\u0C39",    // హ
 
     "t.L": "\u0C33",   // ళ
-    "t_L": "",         // No direct equivalent in this mapping
-    "t_R": "",         // No direct equivalent in this mapping
+    "t_L": "\u0C34",         // No direct equivalent in this mapping
+    "t_R": "\u0C31",         // No direct equivalent in this mapping
 
     // Special signs
     "t;M": "\u0C02",   // ం
     "t.H": "\u0C03",   // ః
-    "t^U": "\u0C4D"   // ్
-
+    "t^U": "\u0C4D",   // ్
+	"t^N" : "\u0C01",
+	"t^C" : "\u0C58",
+	"t~M" : "\u0C00",
+	"tZ" : "\u0C59"
 
 };
 
+export const DEVANAGARI = {
+    // Independent vowels
+    "tA": "\u0905",     // अ
+    "tAA": "\u0906",    // आ
+    "tI": "\u0907",     // इ
+    "tII": "\u0908",    // ई
+    "tU": "\u0909",     // उ
+    "tUU": "\u090A",    // ऊ
+    "t,R": "\u090B",    // ऋ
+    "t,Rr": "\u0960",   // ॠ
+    "t,L": "\u090C",    // ऌ
+    "t,Ll": "\u0961",   // ॡ
+    "tE": "\u090F",     // ए
+    "tEE": "\u090F",    // ए
+    "tAi": "\u0910",    // ऐ
+    "tO": "\u0913",     // ओ
+    "tOO": "\u0913",    // ओ
+    "tAu": "\u0914",    // औ
+
+    // Dependent vowel signs
+    "VOWEL_SIGNS": {
+        "tAA": "\u093E",    // ा
+        "tI": "\u093F",     // ि
+        "tII": "\u0940",    // ी
+        "tU": "\u0941",     // ु
+        "tUU": "\u0942",    // ू
+        "t,R": "\u0943",    // ृ
+        "t,Rr": "\u0944",   // ॄ
+        "t,L": "\u0962",    // ॢ
+        "t,Ll": "\u0963",   // ॣ
+        "tE": "\u0947",     // े
+        "tEE": "\u0947",    // े
+        "tAi": "\u0948",    // ै
+        "tO": "\u094B",     // ो
+        "tOO": "\u094B",    // ो
+        "tAu": "\u094C"     // ौ
+    },
+
+    // Consonants
+    "tK": "\u0915",     // क
+    "tKh": "\u0916",    // ख
+    "tG": "\u0917",     // ग
+    "tGh": "\u0918",    // घ
+    "t;N": "\u0919",    // ङ
+
+    "tC": "\u091A",     // च
+    "tCh": "\u091B",    // छ
+    "tJ": "\u091C",     // ज
+    "tJh": "\u091D",    // झ
+    "t~N": "\u091E",    // ञ
+
+    "t.T": "\u091F",    // ट
+    "t.TH": "\u0920",   // ठ
+    "t.D": "\u0921",    // ड
+    "t.Dh": "\u0922",   // ढ
+    "t.N": "\u0923",    // ण
+
+    "tT": "\u0924",     // त
+    "tTh": "\u0925",    // थ
+    "tD": "\u0926",     // द
+    "tDh": "\u0927",    // ध
+    "tN": "\u0928",     // न
+    "t_N": "\u0929",    // ऩ (rare)
+
+    "tP": "\u092A",     // प
+    "tPH": "\u092B",    // फ
+    "tB": "\u092C",     // ब
+    "tBH": "\u092D",    // भ
+    "tM": "\u092E",     // म
+
+    "tY": "\u092F",     // य
+    "tR": "\u0930",     // र
+    "tL": "\u0932",     // ल
+    "tV": "\u0935",     // व
+
+    "tS": "\u0936",     // श
+    "t.S": "\u0937",    // ष
+    "tSH": "\u0938",    // स
+    "tH": "\u0939",     // ह
+
+    "t.L": "\u0933",    // ळ
+    "t_L": "\u0934",     
+    "t_R": "\u0931",    // ऱ
+
+    // Special signs
+    "t;M": "\u0902",    // ं
+    "t.H": "\u0903",    // ः
+    "t^U": "\u094D",    // ्
+    "t^N": "\u0901",    // ँ
+    "t~M": "\u0900",    // ऀ
+
+    // Extended / foreign sounds
+    "t_H": "\u1CF5",    // ᳵ
+    "t^H": "\u1CF6",    // ᳶ
+    "t^C": "\u091A\u093C", // च़
+    "t^CH": "\u091B\u093C", // छ़
+    "t.R": "\u0921\u093C",  // ड़
+    "t.RH": "\u0922\u093C", // ढ़
+    "t;Y": "\u092F\u093C",  // य़
+    "t^R": "\u0930\u094D\u200D", // र्‍
+    "t'": "\u093D",      // ऽ
+    "tQ": "\u0915\u093C", // क़
+    "t_KH": "\u0916\u093C", // ख़
+    "t.G": "\u0917\u093C", // ग़
+    "t^Z": "\u091D\u093C", // झ़
+    "tF": "\u092B\u093C", // फ़
+    "tW": "\u0935\u093C", // व़
+
+    // Explicitly unsupported / unused forms
+    "t*.N": "",
+    "t*N": "",
+    "t*R": "",
+    "t*L": "",
+    "t*.L": "",
+    "t*K": ""
+};
 //:w
