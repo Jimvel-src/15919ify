@@ -1,5 +1,5 @@
 import {
-	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI
+	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA
 } from "./dicts.js";
 
 // console.log("tst: frmwrk LOADED");
@@ -101,296 +101,91 @@ function scanAndParse(text, autoAnu) {
 	return tokens;
 }
 
-function tokensToMalayalam(tokens) {
-	let result= "";
+
+function tokensToScript(tokens, lang) {
+	let result = "";
+	let langinfo = LANGUAGE_REGISTRY[lang]
 	for (const item of tokens) {
 		if (item.type === "SPACE") {
-			result = result + " ";
-			continue; // space is pushed through
+			result += " "; continue;
 		}
 		if (item.type === "UNKNOWN") {
-			result = result + item.raw;
-			continue; // push unknown input through
+			result += item.raw; continue;
 		}
 		const {consonant, vowel} = item;
-
-		// case ein: independante vowels
 		if (!consonant && vowel) {
-			result += MALAYALAM[vowel] || "";
-			continue;
+			result+= langinfo.dict[vowel] || "";
 		}
-		
-		//case zwei: start w/ consonant
-		if (consonant) {
-			if (vowel && vowel=== "t^U") { // if cons + vowel
-				const baseConsonant = MALAYALAM[consonant] || "";
-				const chndrakkala = "\u0D4D"
-				result += baseConsonant + chndrakkala;
-			}
-			else if (vowel) { 
-				const baseConsonant = MALAYALAM[consonant] || "";
-				const vowelThing = MALAYALAM.VOWEL_SIGNS[vowel] ?? "";
-				result += baseConsonant + vowelThing;
-			}
+		if (consonant && consonant in langinfo.dict) { 
+			if (vowel && vowel === "t^U") {
+		                result += langinfo.dict[consonant] || "";
+                		result += langinfo.virama;
+            		}
+			else if (vowel) {
+                		const baseConsonant = langinfo.dict[consonant] || "";
+                		const vowelSign = langinfo.dict.VOWEL_SIGNS[vowel] ?? "";
+                		result += baseConsonant + vowelSign;
+            		}
 			else { 
-				if (consonant === "t;M" || consonant === "t.H") {
-					result += MALAYALAM[consonant] || "";
+				if (consonant === "t;M" || consonant === "t.H" || consonant === "t^N" ||consonant === "t~M") {
+					result += langinfo.dict[consonant] || "";
 				}
 				else if (!isChill(consonant)){
-					const chndrakkala = "\u0D4D"
-					const baseConsonant = MALAYALAM[consonant] || "";
-					result += baseConsonant + chndrakkala;
+					const baseConsonant = langinfo.dict[consonant] || "";
+					result += baseConsonant + langinfo.virama;
 				}
 				else {
-					result += MALAYALAM[consonant]
+					result += langinfo.dict[consonant];
 				}
 			}
 		}
-	}
-	return result;
+	} return result;
 }
-
-function tokensToTamil(tokens) {
-    let result = "";
-
-    for (const item of tokens) {
-        if (item.type === "SPACE") {
-            result += " ";
-            continue; // space is pushed through
-        }
-
-        if (item.type === "UNKNOWN") {
-            result += item.raw;
-            continue; // push unknown input through
-        }
-
-        const { consonant, vowel } = item;
-
-        // case one: independent vowelskannada
-        if (!consonant && vowel) {
-            result += TAMIL[vowel] || "";
-            continue;
-        }
-
-        // case two: starts with consonant
-        if (consonant) {
-            const baseConsonant = TAMIL[consonant] || "";
-
-            // consonant + pulli
-            if (vowel && vowel === "t^U") {
-                result += baseConsonant + "\u0BCD";
-            }
-
-            // consonant + dependent vowel
-            else if (vowel) {
-                const vowelThing =
-                    TAMIL.VOWEL_SIGNS[vowel] ?? "";
-
-                result += baseConsonant + vowelThing;
-            }
-
-            // consonant with no vowel
-            else {
-                // anusvaram / aytham
-                if (consonant === "t;M" || consonant === "t.H") {
-                    result += baseConsonant;
-                }
-
-                // normal consonant gets Tamil pulli
-                else {
-                    result += baseConsonant + "\u0BCD";
-                }
-            }
-        }
-    }
-
-    return result;
-}
-
-function tokensToKannada(tokens) {
-	let result= "";
-	for (const item of tokens) {
-		if (item.type === "SPACE") {
-			result = result + " ";
-			continue; // space is pushed through
-		}
-		if (item.type === "UNKNOWN") {
-			result = result + item.raw;
-			continue; // push unknown input through
-		}
-		const {consonant, vowel} = item;
-
-		// case ein: independant vowels
-		if (!consonant && vowel) {
-			result += KANNADA[vowel] || "";
-			continue;
-		}
-		
-		//case zwei: start w/ consonant
-		if (consonant) {
-			if (vowel && vowel=== "t^U") { // if cons + vowel
-				const baseConsonant = KANNADA[consonant] || "";
-				const halant = "\u0CCD"
-				result += baseConsonant + halant;
-			}
-			else if (vowel) { 
-				const baseConsonant = KANNADA[consonant] || "";
-				const vowelThing = KANNADA.VOWEL_SIGNS[vowel] ?? "";
-				result += baseConsonant + vowelThing;
-			}
-			else { 
-				if (consonant === "t;M" || consonant === "t.H") {
-					result += KANNADA[consonant] || "";
-				}
-				else {
-					const halant = "\u0CCD"
-					const baseConsonant = KANNADA[consonant] || "";
-					result += baseConsonant + halant;
-				}
-			}
-		}
-	}
-	return result;
-}
-
-function tokensToTelugu(tokens) {
-	let result= "";
-	for (const item of tokens) {
-		if (item.type === "SPACE") {
-			result = result + " ";
-			continue; // space is pushed through
-		}
-		if (item.type === "UNKNOWN") {
-			result = result + item.raw;
-			continue; // push unknown input through
-		}
-		const {consonant, vowel} = item;
-
-
-		// independant vowels case
-		if (!consonant && vowel) {
-			result += TELUGU[vowel] || "";
-			continue;
-		}
-
-		if (consonant) { // init w/ consnant
-			if (vowel && vowel=== "t^U") { // explicit halant
-				const baseConsonant = TELUGU[consonant] || "";
-				const halant = "\u0C4D"
-				result += baseConsonant + halant;
-			}
-			else if (vowel) { 
-				const baseConsonant = TELUGU[consonant] || "";
-				const vowelThing = TELUGU.VOWEL_SIGNS[vowel] ?? "";
-				result += baseConsonant + vowelThing;
-			}
-			else { 
-				if (consonant === "t;M" || consonant === "t.H" || consonant === "t^N" || consonant === "t~M") {
-					result += TELUGU[consonant] || "";
-				}
-				else {
-					const halant = "\u0C4D"
-					const baseConsonant = TELUGU[consonant] || "";
-					result += baseConsonant + halant;
-				}
-			}
-		}
-
-	}
-	return result;
-}
-
-
-function tokensToDevanagari(tokens) {
-    let result = "";
-
-    for (const item of tokens) {
-        if (item.type === "SPACE") {
-            result += " ";
-            continue;
-        }
-
-        if (item.type === "UNKNOWN") {
-            result += item.raw;
-            continue;
-        }
-
-        const { consonant, vowel } = item;
-
-        // Independent vowels
-        if (!consonant && vowel) {
-            result += DEVANAGARI[vowel] || "";
-            continue;
-        }
-
-        // Start with consonant
-        if (consonant) {
-            if (vowel && vowel === "t^U") {
-                // Explicit virama
-                result += DEVANAGARI[consonant] || "";
-                result += "\u094D";
-            }
-            else if (vowel) {
-                const baseConsonant = DEVANAGARI[consonant] || "";
-                const vowelSign = DEVANAGARI.VOWEL_SIGNS[vowel] ?? "";
-                result += baseConsonant + vowelSign;
-            }
-            else {
-                if (
-                    consonant === "t;M" ||
-                    consonant === "t.H" ||
-                    consonant === "t^N" ||
-                    consonant === "t~M"
-                ) {
-                    result += DEVANAGARI[consonant] || "";
-                }
-                else {
-                    const baseConsonant = DEVANAGARI[consonant] || "";
-                    result += baseConsonant + "\u094D";
-                }
-            }
-        }
-    } 
-
-    return result;
-}
-
 const LANGUAGE_REGISTRY = {
 	malayalam : {
         	autoAnu: true,
-        	converter: tokensToMalayalam
+		dict: MALAYALAM,
+		virama:"\u0D02"
     	},
     	tamil : {
         	autoAnu: false,
-        	converter: tokensToTamil
+		dict:TAMIL,
+		virama:"\u0BCD"
     	},
    	kannada : {
         	autoAnu: true,
-        	converter: tokensToKannada
+		dict:KANNADA,
+		virama:"\u0CCD"
     	},
     	telugu : {
         	autoAnu: true,
-        	converter: tokensToTelugu
+		dict:TELUGU,
+		virama:"\u0C4D"
     	}, 
 	devanagari : {
 		autoAnu: false,
-		converter: tokensToDevanagari
+		dict:DEVANAGARI,
+		virama:"\u094D"
+	},
+	odia : {
+		autoAnu: false,
+		dict: ODIA,
+		virama : "\u0B4D"
 	}
 };
 
 
 function convertText(inputText, lang) {
-    const language = LANGUAGE_REGISTRY[lang];
+    	const language = LANGUAGE_REGISTRY[lang];
 
-    if (!language) {
-        throw new Error("Unknown output script: " + lang);
-    }
+    	if (!language) {
+        	throw new Error("Unknown output script: " + lang);
+    	}
 
-    const tokenea = scanAndParse(inputText, language.autoAnu);
-
-    return language.converter(tokenea);
+    	const tokenea = scanAndParse(inputText, language.autoAnu);
+	return tokensToScript(tokenea, lang);
+//    return language.converter(tokenea);
 }
-
 
 export function tokenize(inputText, options = {}) {
     const autoAnu = options.autoAnu ?? false;
