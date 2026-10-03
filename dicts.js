@@ -124,10 +124,7 @@ export const MALAYALAM = {
 		"t*R": "\u0D7C",  // ർ
 		"t*L": "\u0D7D",  // ൽ
         	"t*.L": "\u0D7E", // ൾ
-        	"t*K": "\u0D7F",  // ൿ  
-
-	"t~M": "",  
-	"t^N":""
+        	"t*K": "\u0D7F"  // ൿ   man, i have never used this letter ever, in all my years of being a native
 };
 
 export const TAMIL = {
@@ -228,9 +225,8 @@ export const TAMIL = {
     // special symbols
     "t;M": "\u0B82",  // ஂ
     "t_K": "\u0B83",  // ஃ
-    "t^U": "\u0BCD",  // ்
+    "t^U": "\u0BCD"  // ்
 
-	"t~M": "",  "t^N":""
 
 };
 
@@ -322,8 +318,7 @@ export const KANNADA = {
     // special symbols :w
     "t;M": "\u0C82", // Anusvara (ಂ)
     "t.H": "\u0C83", // Visarga (ಃ)
-    "t^U": "\u0CCD", // Virama / Halant (್)
-	"t~M": "",  "t^N":""
+    "t^U": "\u0CCD" // Virama / Halant (್)
 
 };
 
@@ -528,13 +523,104 @@ export const DEVANAGARI = {
     "t^Z": "\u091D\u093C", // झ़
     "tF": "\u092B\u093C", // फ़
     "tW": "\u0935\u093C", // व़
-
-    // Explicitly unsupported / unused forms
-    "t*.N": "",
-    "t*N": "",
-    "t*R": "",
-    "t*L": "",
-    "t*.L": "",
-    "t*K": ""
 };
+
+export const ODIA = {
+    // Independent vowels
+    "tA": "\u0B05",     // ଅ
+    "tAA": "\u0B06",    // ଆ
+    "tI": "\u0B07",     // ଇ
+    "tII": "\u0B08",    // ଈ
+    "tU": "\u0B09",     // ଉ
+    "tUU": "\u0B0A",    // ଊ
+    "t,R": "\u0B0B",    // ଋ
+    "t,Rr": "\u0B60",   // ୠ
+    "t,L": "\u0B0C",    // ଌ
+    "t,Ll": "\u0B61",   // ୡ
+    "tE": "\u0B0F",     // ଏ
+    "tEE": "\u0B0F",    // ଏ
+    "tAi": "\u0B10",   // ଐ
+    "tO": "\u0B13",     // ଓ
+    "tOO": "\u0B13",    // ଓ
+    "tAu": "\u0B14",    // ଔ
+
+    // Dependent vowel signs
+    "VOWEL_SIGNS": {
+        "tAA": "\u0B3E",    // ା
+        "tI": "\u0B3F",     // ି
+        "tII": "\u0B40",    // ୀ
+        "tU": "\u0B41",     // ୁ
+        "tUU": "\u0B42",    // ୂ
+        "t,R": "\u0B43",    // ୃ
+        "t,Rr": "\u0B44",   // ୄ
+        "t,L": "\u0B62",    // ୢ
+        "t,Ll": "\u0B63",   // ୣ
+        "tE": "\u0B47",     // େ
+        "tEE": "\u0B47",    // େ
+        "tAi": "\u0B48",    // ୈ
+        "tO": "\u0B4B",     // ୋ
+        "tOO": "\u0B4B",    // ୋ
+        "tAu": "\u0B4C"     // ୌ
+    },
+
+    // Consonants
+    "tK": "\u0B15",     // କ
+    "tKh": "\u0B16",    // ଖ
+    "tG": "\u0B17",     // ଗ
+    "tGh": "\u0B18",    // ଘ
+    "t;N": "\u0B19",    // ଙ
+
+    "tC": "\u0B1A",     // ଚ
+    "tCh": "\u0B1B",    // ଛ
+    "tJ": "\u0B1C",     // ଜ
+    "tJh": "\u0B1D",    // ଝ
+    "t~N": "\u0B1E",    // ଞ
+
+    "t.T": "\u0B1F",    // ଟ
+    "t.TH": "\u0B20",   // ଠ
+    "t.D": "\u0B21",    // ଡ
+    "t.Dh": "\u0B22",   // ଢ
+    "t.N": "\u0B23",    // ଣ
+
+    "tT": "\u0B24",     // ତ
+    "tTh": "\u0B25",    // ଥ
+    "tD": "\u0B26",     // ଦ
+    "tDh": "\u0B27",    // ଧ
+    "tN": "\u0B28",     // ନ
+
+    "tP": "\u0B2A",     // ପ
+    "tPH": "\u0B2B",    // ଫ
+    "tB": "\u0B2C",     // ବ
+    "tBH": "\u0B2D",    // ଭ
+    "tM": "\u0B2E",     // ମ
+
+    "tY": "\u0B2F",     // ଯ
+    "tR": "\u0B30",     // ର
+    "tL": "\u0B32",     // ଲ
+    "tV": "\u0B35",     // ଵ
+
+    "tS": "\u0B36",     // ଶ
+    "t.S": "\u0B37",    // ଷ
+    "tSH": "\u0B38",    // ସ
+    "tH": "\u0B39",     // ହ
+
+    "t.L": "\u0B33",    // ଳ
+    "t.R": "\u0B5C",    // ଡ଼
+    "t.RH": "\u0B5D",   // ଢ଼
+
+    // Special signs
+    "t;M": "\u0B02",    // ଂ
+    "t.H": "\u0B03",    // ଃ
+    "t^U": "\u0B4D",    // ୍
+    "t^N": "\u0B01",    // ଁ
+    "t'": "\u0B3D",     // ଽ
+
+    // Additional Odia letter
+    "tW": "\u0B71",      // ୱ
+	"t.R":"\u0B5C",
+	"t.RH":"\u0B5D",
+	"t;Y":"\u0B5F",
+	"t'":"\u0B3D"
+};
+
 //:w
