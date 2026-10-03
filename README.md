@@ -15,6 +15,17 @@ Try the tool out [here](https://sox.nekoweb.org/15919.html)
 - [X] Malayalam
 - [X] Tamil
 - [X] Kannada
+- [X] Telugu
+- [X] Devenagari
+- [X] Odia
+- [ ] Bengali
+- [ ] Gurumukhi
+- [ ] Gujarati
+- [ ] Kaithi
+- [ ] Sinhala
+- [ ] Tibetan
+- [ ] Thai
+- [ ] Saurashtra
 
 ## Syntax and Typing
 For a basic idea on how this system works, refer to the following tables for typing instructions based on the modified [7Bit ISO 15919](https://en.wikipedia.org/wiki/ISO_15919)
@@ -23,4 +34,5 @@ For a basic idea on how this system works, refer to the following tables for typ
 * Refer to [Kannada section](kannada.md) for instructions on typing Kannada
 * Refer to [Telugu section](telugu.md) for instructions on typing Telugu
 * Refer to [Devanagari section](devanagari.md) for instructions on typing Hindi, Nepali and other languages which use Devanagiri
+* Refer to [Odiya Section](odia.md) for instructions on typing Odia / Oriya
 
