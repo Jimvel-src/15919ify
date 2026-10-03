@@ -25,7 +25,7 @@ export const PUNCT_DICT = {
     ",r": "t,R", ",rr": "t,Rr", ",l": "t,L", ",ll": "t,Ll",
     ";m": "t;M", ".h": "t.H", ";n": "t;N", "~n": "t~N", ".n": "t.N",
     "_r": "t_R", "_t": "t_T", "_n": "t_N", "_l": "t_L",
-    ".l": "t.L", "v": "tV", ".s": "t.S", "'": "t'", "^u": "t^U", "~m": "t~M",  "^n" :"t^N", "^c" : "t^C", "_k":"t_K", "z" : "tZ", "_h": "t_H", "^h" : "t^H", "^c" : "t^C", "^ch" :  "t^CH",".r" : "t.R", ".rh" : "t.RH", ";y" : "t;Y", "^r" : "t^R", "q":"tQ", "_kh":"t_KH", ".g":"t.G", "^z":"t^Z", "f":"tF" 
+    ".l": "t.L", "v": "tV", ".s": "t.S", "'": "t'", "^u": "t^U", "~m": "t~M",  "^n" :"t^N", "^c" : "t^C", "_k":"t_K", "z" : "tZ", "_h": "t_H", "^h" : "t^H", "^c" : "t^C", "^ch" :  "t^CH",".r" : "t.R", ".rh" : "t.RH", ";y" : "t;Y", "^r" : "t^R", "q":"tQ", "_kh":"t_KH", ".g":"t.G", "^z":"t^Z", "f":"tF", 
 	".t":"t.T", ".th": "t.TH", ".d":"t.D", ".dh": "t.Dh",
 	"*.n":"t*.N", "*n":"t*N", "*r":"t*R", "*l": "t*L",  "*.l": "t*.L", "*k": "t*K" // really should organise this
 	
