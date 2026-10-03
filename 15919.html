@@ -1,20 +1,36 @@
-	<html>
+<!doctype html>
+<html>
 	<head>
 		<title>15919+</title>
 		<script type="module" src="15919.js" defer></script>
+		<link rel="stylesheet" href="15919.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=autorenew" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@600&display=swap" rel="stylesheet">	
 	</head>
 	<body>
-		<h1 class="title" id="title">15919ify+</h1>
-		<textarea id="inputText" class="inputText"></textarea>
-		<p id="outputText">output.. </p>
+		<div id="ribbon">
+			<a id="back" href="https://sox.nekoweb.org/projects.html">Back</a>
+			<h1 class="title" id="title">15919ify+</h1>
+			<a href="https://github.com/Jimvel-src/15919ify/tree/main" id="ver">v1.7.4</a>
 			<select id="langdd">
-				<option value="mal">Malayalam</option>
+				<option value="malayalam">Malayalam</option>
 				<option value="tamil">Tamil</option>
 				<option value="kannada">Kannada</option>
 				<option value="telugu">Telugu</option>
 				<option value="devanagari">Devanagari</option>
+				<option value="odia">Odia</option>
 			</select>
-		<button id="run" class="run">manual refresh</button>
+			<button id="run" class="run"><span class="material-symbols-outlined">
+autorenew
+</span></button>
+
+		</div>
+		<div id="workspace">
+			<div id="in">	<textarea id="inputText" class="inputText"></textarea>	</div>
+			<div id="out">	<p id="outputText">output.. </p>	</div>
+		</div>
 		<script>
 			let idleTimer;
 			const delayIdle = 500; //adjust if you want faster or slower refreshes.
@@ -79,8 +95,8 @@
 					}
 				}
 			});		
-
 		</script>
 	</body>
 </html>
+
 
