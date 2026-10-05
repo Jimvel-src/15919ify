@@ -1,5 +1,5 @@
 import {
-	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA
+	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA, BANGLA
 } from "./dicts.js";
 
 // console.log("tst: frmwrk LOADED");
@@ -171,6 +171,11 @@ const LANGUAGE_REGISTRY = {
 		autoAnu: false,
 		dict: ODIA,
 		virama : "\u0B4D"
+	},
+	bangla : {
+		autoAnu: false, 
+		dict: BANGLA,
+		virama : "\u09CD"
 	}
 };
 
