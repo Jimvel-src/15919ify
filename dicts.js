@@ -504,8 +504,9 @@ export const DEVANAGARI = {
     "t;M": "\u0902",    // ं
     "t.H": "\u0903",    // ः
     "t^U": "\u094D",    // ्
-    "t^N": "\u0901",    // ँ
-    "t~M": "\u0900",    // ऀ
+    "t^N": "\u0900",    // ँ
+    "t~M": "\u0901",    // ऀ
+
 
     // Extended / foreign sounds
     "t_H": "\u1CF5",    // ᳵ
@@ -621,6 +622,105 @@ export const ODIA = {
 	"t.RH":"\u0B5D",
 	"t;Y":"\u0B5F",
 	"t'":"\u0B3D"
+};
+
+export const BANGLA= {
+	"tA":"\u0985",
+	"tAA":"\u0986",
+	"tI":"\u0987",
+	"tII":"\u0988",
+	"tU":"\u0989",
+ 	"tUU": "\u098A",    
+    	"t,R": "\u098B",    
+    	"t,Rr": "\u09E0",   
+    	"t,L": "\u098C",    
+    	"t,Ll": "\u09E1",   
+	"tE": "\u098F",     
+    	"tEE": "\u098F",    
+    	"tAi": "\u0990",    
+    	"tO": "\u0993",     
+    	"tOO": "\u0993",    
+    	"tAu": "\u0994",
+    "VOWEL_SIGNS": {
+        "tAA": "\u09BE",    
+        "tI": "\u09BF",     
+        "tII": "\u09B0",    
+        "tU": "\u09C1",     
+        "tUU": "\u09C2",    
+        "t,R": "\u09C3",    
+        "t,Rr": "\u09C4",   
+        "t,L": "\u09E2",    
+        "t,Ll": "\u09E3",   
+        "tE": "\u09C7",     
+        "tEE": "\u09C7",    
+        "tAi": "\u09C8",    
+        "tO": "\u09CB",     
+        "tOO": "\u09CB",    
+        "tAu": "\u09CC"     
+    },
+
+    // Consonants
+    "tK": "\u0995",     
+    "tKh": "\u0996",    
+    "tG": "\u0997",     
+    "tGh": "\u0998",    
+	"t;N": "\u0999",    
+
+    "tC": "\u099A",     
+    "tCh": "\u099B",    
+    "tJ": "\u099C",     
+	"tJh": "\u099D",    
+    "t~N": "\u099E",    
+
+    "t.T": "\u099F",    
+    "t.TH": "\u09A0",   
+    "t.D": "\u09A1",    
+	"t.Dh": "\u09A2",   
+    "t.N": "\u09A3",    
+
+    "tT": "\u09A4",     
+    "tTh": "\u09A5",    
+    "tD": "\u09A6",     
+    "tDh": "\u09A7",    
+    "tN": "\u09A8",     
+
+"tP": "\u09AA",     
+    "tPH": "\u09AB",
+    "tB": "\u09AC",     
+    "tBH": "\u09AD",    
+    "tM": "\u09AE",     
+
+	"tY": "\u09AF",     
+    "tR": "\u09B0",     
+    "tL": "\u09B2",     
+    "tW": "\u09F1",     
+
+    "tS": "\u09B8",     
+    "t.S": "\u09B7",    
+    "tSH": "\u09B8",    
+    "tH": "\u09B9",     
+  
+    "t_R": "\u0931",    
+	"t*T":"\u09CE",
+	"t_N":"\u09A8",
+
+    // Special signs
+    "t;M": "\u0982",  
+    "t.H": "\u0983",   
+    "t^U": "\u09CD",    
+	"t~M": "\u0901",    
+
+	"t;Y":"\u09DF",
+	"t'":"\u09BD",
+    "t.R": "\u09DC",  
+    "t.RH": "\u09DD", 
+	"tQ": "\u0995\u09BC", 
+    "t_KH": "\u0996\u09BC", 
+    "t.G": "\u0997\u09BC",
+    "t^Z": "\u099D\u09BC", 
+    "tF": "\u09AB\u09BC",
+	"t*R":"\u09F0"
+
 };
 
 //:w
