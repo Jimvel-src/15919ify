@@ -1,5 +1,5 @@
 import {
-	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA, BANGLA
+	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA, BANGLA_ASAMIYA
 } from "./dicts.js";
 
 // console.log("tst: frmwrk LOADED");
@@ -116,13 +116,17 @@ function tokensToScript(tokens, lang) {
 		if (!consonant && vowel) {
 			result+= langinfo.dict[vowel] || "";
 		}
-		if (consonant && consonant in langinfo.dict) { 
+		if (consonant && (consonant in langinfo.dict || consonant ==="tR")) { 
+			let baseConsonant  = langinfo.dict[consonant] || "";
+			if (consonant === "tR") {
+				if (lang ==="bangla") baseConsonant = "\u09B0";
+				else if (lang ==="asamiya") baseConsonant= "\u09F0";
+			}
 			if (vowel && vowel === "t^U") {
-		                result += langinfo.dict[consonant] || "";
+		                result += baseConsonant;
                 		result += langinfo.virama;
             		}
 			else if (vowel) {
-                		const baseConsonant = langinfo.dict[consonant] || "";
                 		const vowelSign = langinfo.dict.VOWEL_SIGNS[vowel] ?? "";
                 		result += baseConsonant + vowelSign;
             		}
@@ -131,11 +135,10 @@ function tokensToScript(tokens, lang) {
 					result += langinfo.dict[consonant] || "";
 				}
 				else if (!isChill(consonant)){
-					const baseConsonant = langinfo.dict[consonant] || "";
 					result += baseConsonant + langinfo.virama;
 				}
 				else {
-					result += langinfo.dict[consonant];
+					result += baseConsonant;
 				}
 			}
 		}
@@ -174,7 +177,12 @@ const LANGUAGE_REGISTRY = {
 	},
 	bangla : {
 		autoAnu: false, 
-		dict: BANGLA,
+		dict: BANGLA_ASAMIYA,
+		virama : "\u09CD"
+	},
+	asamiya :{
+		autoAnu : false,
+		dict: BANGLA_ASAMIYA,
 		virama : "\u09CD"
 	}
 };
