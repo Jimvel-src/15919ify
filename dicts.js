@@ -624,7 +624,7 @@ export const ODIA = {
 	"t'":"\u0B3D"
 };
 
-export const BANGLA= {
+export const BANGLA_ASAMIYA = {
 	"tA":"\u0985",
 	"tAA":"\u0986",
 	"tI":"\u0987",
@@ -691,7 +691,7 @@ export const BANGLA= {
     "tM": "\u09AE",     
 
 	"tY": "\u09AF",     
-    "tR": "\u09B0",     
+//    "tR": "\u09B0",     
     "tL": "\u09B2",     
     "tW": "\u09F1",     
 
@@ -719,7 +719,7 @@ export const BANGLA= {
     "t.G": "\u0997\u09BC",
     "t^Z": "\u099D\u09BC", 
     "tF": "\u09AB\u09BC",
-	"t*R":"\u09F0"
+//	"t*R":"\u09F0"
 
 };
 
