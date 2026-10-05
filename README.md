@@ -11,14 +11,15 @@ Try the tool out [here](https://sox.nekoweb.org/15919.html)
 ## Features
 * Scans input strings character-by-character, intelligently grouping multi-character consonant and vowel clusters (up to 3-character keys)
 * Dictionary based mapping system covering all letters and symbols in  `Malayalam`, `Tamil` & `Kannada`
-## Langauges supported
+## Scripts supported
 - [X] Malayalam
 - [X] Tamil
 - [X] Kannada
 - [X] Telugu
 - [X] Devenagari
 - [X] Odia
-- [ ] Bengali
+- [X] Bengali
+- [ ] Asamiya
 - [ ] Gurumukhi
 - [ ] Gujarati
 - [ ] Kaithi
