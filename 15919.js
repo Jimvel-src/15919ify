@@ -1,5 +1,5 @@
 import {
-	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA, BANGLA_ASAMIYA
+	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA, BANGLA_ASAMIYA, KAITHI, SAURASHTRA
 } from "./dicts.js";
 
 // console.log("tst: frmwrk LOADED");
@@ -148,7 +148,7 @@ const LANGUAGE_REGISTRY = {
 	malayalam : {
         	autoAnu: true,
 		dict: MALAYALAM,
-		virama:"\u0D02"
+		virama:"\u0D4D"
     	},
     	tamil : {
         	autoAnu: false,
@@ -171,7 +171,7 @@ const LANGUAGE_REGISTRY = {
 		virama:"\u094D"
 	},
 	odia : {
-		autoAnu: false,
+		autoAnu: true,
 		dict: ODIA,
 		virama : "\u0B4D"
 	},
@@ -184,6 +184,16 @@ const LANGUAGE_REGISTRY = {
 		autoAnu : false,
 		dict: BANGLA_ASAMIYA,
 		virama : "\u09CD"
+	},
+	kaithi :{
+		autoAnu : false,
+		dict: KAITHI,
+		virama: "\u{110B9}"
+	},
+	saurashtra : {
+		autoAnu : false,
+		dict: SAURASHTRA,
+		virama: "\uAC84"
 	}
 };
 
@@ -215,7 +225,7 @@ export {
 
 // fallback for legacy CJS (Node.js) & global Browser window
 if (typeof exports === 'object' && typeof module !== 'undefined') {
-    module.exports = { convertText, scanAndParse, registerLanguage, LANGUAGE_REGISTRY };
+    module.exports = { convertText, scanAndParse, LANGUAGE_REGISTRY };
 } else if (typeof window !== 'undefined') {
     // window.15919ify = { convertText, scanAndParse, registerLanguage, LANGUAGE_REGISTRY };
     window.convertText = convertText; // backwards compatibility for reference html 
