@@ -23,6 +23,9 @@
 				<option value="odia">Odia</option>
 				<option value="bangla">Bangla</option>
 				<option value="asamiya">Asamiya</option>
+				<option value="saurashtra">Saurashtra</option>
+				<option value="kaithi">Kaithi</option>
+
 			</select>
 			<button id="run" class="run"><span class="material-symbols-outlined">
 autorenew
@@ -82,7 +85,8 @@ autorenew
 				const isAlpha = /^[a-zA-z]$/.test(e.key);
 				const isEnter = e.key == 'Enter';
 				const isSpace = e.key === ' ' || e.code === 'Space';
-				if (isAlpha || isEnter) {
+				const OSKeys = e.ctrlKey;
+				if (isAlpha || isEnter && !OSKeys) {
 					inputTextBox.focus();
 					if (isAlpha || isSpace) {
 						e.preventDefault();
