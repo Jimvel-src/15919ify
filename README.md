@@ -19,14 +19,14 @@ Try the tool out [here](https://sox.nekoweb.org/15919.html)
 - [X] Devenagari
 - [X] Odia
 - [X] Bengali
-- [ ] Asamiya
+- [X] Asamiya
 - [ ] Gurumukhi
 - [ ] Gujarati
-- [ ] Kaithi
+- [X] Kaithi
 - [ ] Sinhala
 - [ ] Tibetan
 - [ ] Thai
-- [ ] Saurashtra
+- [X] Saurashtra
 
 ## Syntax and Typing
 For a basic idea on how this system works, refer to the following tables for typing instructions based on the modified [7Bit ISO 15919](https://en.wikipedia.org/wiki/ISO_15919)
