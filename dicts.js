@@ -722,5 +722,177 @@ export const BANGLA_ASAMIYA = {
 //	"t*R":"\u09F0"
 
 };
+export const SAURASHTRA = {
+    // Independent vowels
+    "tA": "\uA882",     
+    "tAA": "\uA883",    
+    "tI": "\uA884",     
+    "tII": "\uA885",    
+    "tU": "\uA886",     
+    "tUU": "\uA887",
+	"t,R":"\uA888",
+	"t,RR":"\uA889",
+	"t,L":"\uA88A",
+	"t,LL":"\uA88B",
+    "tE": "\uA88C",     
+    "tEE": "\uA88D",    
+    "tAi": "\uA88E",   
+    "tO": "\uA88F",     
+    "tOO": "\uA890",    
+    "tAu": "\uA891",    
+
+    // Dependent vowel signs
+    "VOWEL_SIGNS": {
+        "tAA": "\uA8B5",    
+        "tI": "\uA8B6",     
+	"tII": "\uA8B7",    
+        "tU": "\uA8B8",     
+        "tUU": "\uA8B9",
+
+	"t,R":"\uA8BA",
+	"t,RR":"\uA8BB",
+	"t,L":"\uA8BC",
+	"t,LL":"\uA8BD",
+
+        "tE": "\uA8BE",     
+        "tEE": "\uA8BF",    
+        "tAi": "\uA8C0",    
+        "tO": "\uA8C1",     
+        "tOO": "\uA8C2",    
+        "tAu": "\uA8C3"     
+    },
+
+    // Consonants
+    "tK": "\uA892",    
+    "tKh": "\uA893",    
+    "tG": "\uA894",     
+    "tGh": "\uA895",    
+    "t;N": "\uA896", 
+
+    "tC": "\uA897",     
+    "tCh": "\uA898",    
+    "tJ": "\uA899",     
+    "tJh": "\uA89A",    
+    "t~N": "\uA89B",    
+
+    "t.T": "\uA89C",  
+    "t.TH": "\uA89D", 
+    "t.D": "\uA89E",  
+    "t.Dh": "\uA89F", 
+    "t.N": "\uA8A0",  
+
+    "tT": "\uA8A1",   
+    "tTh": "\uA8A2",  
+    "tD": "\uA8A3",
+    "tDh": "\uA8A4",   	
+    "tN": "\uA8A5",     
+
+    "tP": "\uA8A6",     
+    "tPH": "\uA8A7",   
+    "tB": "\uA8A8",     
+    "tBH": "\uA8A9",    
+    "tM": "\uA8AA",     
+
+    "tY": "\uA8AB",     
+    "tR": "\uA8AC",    
+    "tL": "\uA8AD",     
+    "tV": "\uA8AE",     
+
+    "tS": "\uA8B1",     
+    "t.S": "\uA8B0",    
+    "tSH": "\uA8AF",    
+    "tH": "\uA8B2",     
+
+    // Special signs
+    "t;M": "\uA880",    
+    "t.H": "\uA881",    
+    "t^U": "\uAC84"
+};
+
+
+export const KAITHI = {
+// Independent vowels
+    "tA": "\u{11083}",      // 𑂃
+    "tAA": "\u{11084}",     // 𑂄
+    "tI": "\u{11085}",      // 𑂅
+    "tII": "\u{11086}",     // 𑂆
+    "tU": "\u{11087}",      // 𑂇
+    "tUU": "\u{11088}",     // 𑂈
+    "tE": "\u{11089}",      // 𑂉
+    "tEE": "\u{11089}",     // 𑂉
+    "tAi": "\u{1108A}",     // 𑂊
+    "tO": "\u{1108B}",      // 𑂋
+    "tOO": "\u{1108B}",     // 𑂋
+    "tAu": "\u{1108C}",     // 𑂌
+
+    // Dependent vowel signs
+    "VOWEL_SIGNS": {
+        "tAA": "\u{110B0}",    // 𑂰
+        "tI": "\u{110B1}",     // 𑂱
+        "tII": "\u{110B2}",    // 𑂲
+        "tU": "\u{110B3}",     // 𑂳
+        "tUU": "\u{110B4}",    // 𑂴
+        "t,R": "\u{110C2}",    // 𑃂
+        "tE": "\u{110B5}",     // 𑂵
+        "tEE": "\u{110B5}",    // 𑂵
+        "tAi": "\u{110B6}",    // 𑂶
+        "tO": "\u{110B7}",     // 𑂷
+        "tOO": "\u{110B7}",    // 𑂷
+        "tAu": "\u{110B8}"     // 𑂸
+    },
+
+    // Consonants
+    "tK": "\u{1108D}",      // 𑂍
+    "tKh": "\u{1108E}",     // 𑂎
+    "tG": "\u{1108F}",      // 𑂏
+    "tGh": "\u{11090}",     // 𑂐
+    "t;N": "\u{11091}",     // 𑂑
+
+    "tC": "\u{11092}",      // 𑂒
+    "tCh": "\u{11093}",     // 𑂓
+    "tJ": "\u{11094}",      // 𑂔
+    "tJh": "\u{11095}",     // 𑂕
+    "t~N": "\u{11096}",     // 𑂖
+
+    "t.T": "\u{11097}",     // 𑂗
+    "t.TH": "\u{11098}",    // 𑂘
+    "t.D": "\u{11099}",     // 𑂙
+    "t.Dh": "\u{1109B}",    // 𑂛
+    "t.N": "\u{1109D}",     // 𑂝
+
+    "tT": "\u{1109E}",      // 𑂞
+    "tTh": "\u{1109F}",     // 𑂟
+    "tD": "\u{110A0}",      // 𑂠
+    "tDh": "\u{110A1}",     // 𑂡
+    "tN": "\u{110A2}",      // 𑂢
+
+    "tP": "\u{110A3}",      // 𑂣
+    "tPH": "\u{110A4}",     // 𑂤
+    "tB": "\u{110A5}",      // 𑂥
+    "tBH": "\u{110A6}",     // 𑂦
+    "tM": "\u{110A7}",      // 𑂧
+
+    "tY": "\u{110A8}",      // 𑂨
+    "tR": "\u{110A9}",      // 𑂩
+    "tL": "\u{110AA}",      // 𑂪
+    "tV": "\u{110AB}",      // 𑂫
+
+    "tS": "\u{110AC}",      // 𑂬
+    "t.S": "\u{110AD}",     // 𑂭
+    "tSH": "\u{110AE}",     // 𑂮
+    "tH": "\u{110AF}",      // 𑂯
+
+    // Additional retroflex letters
+    "t.R": "\u{1109A}",    // 𑂚
+    "t.RH": "\u{1109C}",   // 𑂜
+
+    // Special signs
+    "t;M": "\u{11081}",    // 𑂁
+    "t.H": "\u{11082}",    // 𑂂
+    "t^U": "\u{110B9}",    // 𑂹
+    "t^N": "\u{11080}"     // 𑂀
+};
+
+
 
 //:w
