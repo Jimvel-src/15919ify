@@ -20,8 +20,8 @@ Try the tool out [here](https://sox.nekoweb.org/15919.html)
 - [X] Odia
 - [X] Bengali
 - [X] Asamiya
-- [ ] Gurumukhi
-- [ ] Gujarati
+- [X] Gurumukhi
+- [X] Gujarati
 - [X] Kaithi
 - [ ] Sinhala
 - [ ] Tibetan
