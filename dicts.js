@@ -67,8 +67,8 @@ export const MALAYALAM = {
 		"t,Rr": "\u0D44", // ൄ
 		"t,L": "\u0D62", // ൢ
 		"t,Ll": "\u0D63", // ൣ
-        	"tE": "\u0D47",  // െ
-        	"tEE": "\u0D48", // േ
+        	"tE": "\u0D46",  // െ
+        	"tEE": "\u0D47", // േ
         	"tAi": "\u0D48", // ൈ
         	"tO": "\u0D4A",  // ൊ
         	"tOO": "\u0D4B", // ോ
@@ -624,7 +624,7 @@ export const ODIA = {
 	"t'":"\u0B3D"
 };
 
-export const BANGLA_ASAMIYA = {
+export const BANGLAASAMIYA = {
 	"tA":"\u0985",
 	"tAA":"\u0986",
 	"tI":"\u0987",
