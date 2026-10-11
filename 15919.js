@@ -1,5 +1,5 @@
 import {
-	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA, BANGLA_ASAMIYA, KAITHI, SAURASHTRA
+	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA, BANGLA_ASAMIYA, KAITHI, SAURASHTRA, GURUMUKHI, GUJARATI
 } from "./dicts.js";
 
 // console.log("tst: frmwrk LOADED");
@@ -194,6 +194,16 @@ const LANGUAGE_REGISTRY = {
 		autoAnu : false,
 		dict: SAURASHTRA,
 		virama: "\uAC84"
+	},
+	gurumukhi :{
+		autoAnu: false,
+		dict: GURUMUKHI,
+		virama:"\u0A4D"
+	}, 
+	gujarati :{
+		autoAnu : false,
+		dict : GUJARATI,
+		virama :"\u0ACD"
 	}
 };
 
@@ -227,7 +237,7 @@ export {
 if (typeof exports === 'object' && typeof module !== 'undefined') {
     module.exports = { convertText, scanAndParse, LANGUAGE_REGISTRY };
 } else if (typeof window !== 'undefined') {
-    // window.15919ify = { convertText, scanAndParse, registerLanguage, LANGUAGE_REGISTRY };
+    // window.15919ify = { convertText, scanAndParse, LANGUAGE_REGISTRY };
     window.convertText = convertText; // backwards compatibility for reference html 
 }
 
