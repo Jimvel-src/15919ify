@@ -893,6 +893,194 @@ export const KAITHI = {
     "t^N": "\u{11080}"     // 𑂀
 };
 
+export const GURUMUKHI = {
+    // Independent vowels
+    "tA": "\u0A05",     
+    "tAA": "\u0A06",    
+    "tI": "\u0A07",     
+    "tII": "\u0A08",    
+    "tU": "\u0A09",     
+    "tUU": "\u0A0A",    
+    "tE": "\u0A0F",     
+    "tEE": "\u0A0F",    
+    "tAi": "\u0A10",    
+    "tO": "\u0A13",     
+    "tOO": "\u0A13",    
+    "tAu": "\u0A14",    
+
+    // Dependent vowel signs
+    "VOWEL_SIGNS": {
+        "tAA": "\u0A3E",    
+        "tI": "\u0A3F",     
+        "tII": "\u0A40",    
+        "tU": "\u0A41",     
+        "tUU": "\u0A42",    
+        "tE": "\u0A47",     
+        "tEE": "\u0A47",    
+        "tAi": "\u0A48",    
+        "tO": "\u0A4B",     
+        "tOO": "\u0A4B",    
+        "tAu": "\u0A4C"     
+    },
+
+    // Consonants
+    "tK": "\u0A15",     
+    "tKh": "\u0A16",    
+    "tG": "\u0A17",     
+    "tGh": "\u0A18",    
+    "t;N": "\u0A19",    
+
+    "tC": "\u0A1A",     
+    "tCh": "\u0A1B",    
+    "tJ": "\u0A1C",     
+    "tJh": "\u0A1D",    
+    "t~N": "\u0A1E",    
+
+    "t.T": "\u0A1F",    
+    "t.TH": "\u0A20",   
+    "t.D": "\u0A21",    
+    "t.Dh": "\u0A22",   
+	"t.N": "\u0A23",    
+
+    "tT": "\u0A24",     
+    "tTh": "\u0A25",    
+    "tD": "\u0A26",     
+    "tDh": "\u0A27",    
+    "tN": "\u0A28",     
+
+    "tP": "\u0A2A",     
+    "tPH": "\u0A2B",    
+    "tB": "\u0A2C",     
+    "tBH": "\u0A2D",    
+    "tM": "\u0A2E",     
+
+    "tY": "\u0A2F",     
+    "tR": "\u0A30",     
+    "tL": "\u0A32",     
+    "tV": "\u0A35",     
+
+    "tS": "\u0A36",     
+    "tSH": "\u0A38",    
+    "tH": "\u0A39",     
+
+    "t.L": "\u0A33",       
+
+    // Special signs
+    "t;M": "\u0A02",    
+    "t.H": "\u0A03",    
+    "t^U": "\u0A4D",    
+     "t~M": "\u0A01",    
+
+
+    // Extended / foreign sounds
+    "t.R": "\u0A21\u0A3C",  
+    "tQ": "\u0A15\u0A3C",  
+    "t.G": "\u0A17\u0A3C", 
+    "t^Z": "\u0A1C\u0A3C", 
+	"tF": "\u0A2B\u0A3C" 
+};
+export const GUJARATI = {
+    // Independent vowels
+    "tA": "\u0A85",      // અ
+    "tAA": "\u0A86",     // આ
+    "tI": "\u0A87",      // ઇ
+    "tII": "\u0A88",     // ઈ
+    "tU": "\u0A89",      // ઉ
+    "tUU": "\u0A8A",     // ઊ
+    "t,R": "\u0A8B",     // ઋ
+    "t,Rr": "\u0AE0",    // ૠ
+    "t,L": "\u0A8C",     // ઌ
+    "t,Ll": "\u0AE1",    // ૡ
+    "tE": "\u0A8F",      // એ
+    "tEE": "\u0A8F",     // એ
+    "tAi": "\u0A90",     // ઐ
+    "tO": "\u0A93",      // ઓ
+    "tOO": "\u0A93",     // ઓ
+    "tAu": "\u0A94",     // ઔ
+
+    // Dependent vowel signs
+    "VOWEL_SIGNS": {
+        "tAA": "\u0ABE",    // ા
+        "tI": "\u0ABF",     // િ
+        "tII": "\u0AC0",    // ી
+        "tU": "\u0AC1",     // ુ
+        "tUU": "\u0AC2",    // ૂ
+        "t,R": "\u0AC3",    // ૃ
+        "t,Rr": "\u0AC4",   // ૄ
+        "t,L": "\u0AE2",    // ૢ
+        "t,Ll": "\u0AE3",   // ૣ
+        "tE": "\u0AC7",     // ે
+        "tEE": "\u0AC7",    // ે
+        "tAi": "\u0AC8",    // ૈ
+        "tO": "\u0ACB",     // ો
+        "tOO": "\u0ACB",    // ો
+        "tAu": "\u0ACC"     // ૌ
+    },
+
+    // Consonants
+    "tK": "\u0A95",      // ક
+    "tKh": "\u0A96",     // ખ
+    "tG": "\u0A97",      // ગ
+    "tGh": "\u0A98",     // ઘ
+    "t;N": "\u0A99",     // ઙ
+
+    "tC": "\u0A9A",      // ચ
+    "tCh": "\u0A9B",     // છ
+    "tJ": "\u0A9C",      // જ
+    "tJh": "\u0A9D",     // ઝ
+    "t~N": "\u0A9E",     // ઞ
+
+    "t.T": "\u0A9F",     // ટ
+    "t.TH": "\u0AA0",    // ઠ
+    "t.D": "\u0AA1",     // ડ
+    "t.Dh": "\u0AA2",    // ઢ
+    "t.N": "\u0AA3",     // ણ
+
+    "tT": "\u0AA4",      // ત
+    "tTh": "\u0AA5",     // થ
+    "tD": "\u0AA6",      // દ
+    "tDh": "\u0AA7",     // ધ
+    "tN": "\u0AA8",      // ન
+
+    "tP": "\u0AAA",      // પ
+    "tPH": "\u0AAB",     // ફ
+    "tB": "\u0AAC",      // બ
+    "tBH": "\u0AAD",     // ભ
+    "tM": "\u0AAE",      // મ
+
+    "tY": "\u0AAF",      // ય
+    "tR": "\u0AB0",      // ર
+    "tL": "\u0AB2",      // લ
+    "tV": "\u0AB5",      // વ
+
+    "tS": "\u0AB6",      // શ
+    "t.S": "\u0AB7",     // ષ
+    "tSH": "\u0AB8",     // સ
+    "tH": "\u0AB9",      // હ
+
+    "t.L": "\u0AB3",     // ળ
+
+    // Special signs
+    "t;M": "\u0A82",     // ં
+    "t.H": "\u0A83",     // ઃ
+    "t^U": "\u0ACD",     // ્
+    "t^N": "\u0A81",     // ઁ
+    "t'": "\u0ABD",      // ઽ
+
+    // Extended / foreign sounds
+    // Gujarati base consonant + Gujarati nukta (U+0ABC)
+    "t^C": "\u0A9A\u0ABC",    // ચ઼
+    "t^CH": "\u0A9B\u0ABC",   // છ઼
+    "t.R": "\u0AA1\u0ABC",    // ડ઼
+    "t.RH": "\u0AA2\u0ABC",   // ઢ઼
+    "t;Y": "\u0AAF\u0ABC",    // ય઼
+    "tQ": "\u0A95\u0ABC",     // ક઼
+    "t_KH": "\u0A96\u0ABC",   // ખ઼
+    "t.G": "\u0A97\u0ABC",    // ગ઼
+    "t^Z": "\u0A9D\u0ABC",    // ઝ઼
+    "tF": "\u0AAB\u0ABC",     // ફ઼
+    "tW": "\u0AB5\u0ABC"      // વ઼
+};
 
 
 //:w
