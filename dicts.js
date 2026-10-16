@@ -6,7 +6,9 @@ export const VOWELS = new Set(['a', 'e', 'i', 'o', 'u', 'aa', 'ee', 'ii', 'oo', 
 
 export const STANDARD_DICT = {
     // Vowels
-    "a": "tA", "aa": "tAA", "i": "tI", "ii": "tII", 
+    "a": "tA", "aa": "tAA",
+	"ae":"tAE", "aee":"tAEE", // sinhala!!!
+	"i": "tI", "ii": "tII", 
     "u": "tU", "uu": "tUU", "e": "tE", "ee": "tEE", 
     "ai": "tAi", "o": "tO", "oo": "tOO", "au": "tAu",
     // Consonants
@@ -27,7 +29,8 @@ export const PUNCT_DICT = {
     "_r": "t_R", "_t": "t_T", "_n": "t_N", "_l": "t_L",
     ".l": "t.L", "v": "tV", ".s": "t.S", "'": "t'", "^u": "t^U", "~m": "t~M",  "^n" :"t^N", "^c" : "t^C", "_k":"t_K", "z" : "tZ", "_h": "t_H", "^h" : "t^H", "^c" : "t^C", "^ch" :  "t^CH",".r" : "t.R", ".rh" : "t.RH", ";y" : "t;Y", "^r" : "t^R", "q":"tQ", "_kh":"t_KH", ".g":"t.G", "^z":"t^Z", "f":"tF", 
 	".t":"t.T", ".th": "t.TH", ".d":"t.D", ".dh": "t.Dh",
-	"*.n":"t*.N", "*n":"t*N", "*r":"t*R", "*l": "t*L",  "*.l": "t*.L", "*k": "t*K" // really should organise this
+	"*.n":"t*.N", "*n":"t*N", "*r":"t*R", "*l": "t*L",  "*.l": "t*.L", "*k": "t*K", // really should organise this
+	"^ng":"t^NG", "^nj":"t^NJ", "^n.d":"t^N.D", "^nd":"t^ND", "^mb":"t^MB"
 	
 };
 
@@ -1082,5 +1085,98 @@ export const GUJARATI = {
     "tW": "\u0AB5\u0ABC"      // વ઼
 };
 
+export const SINHALA = {
+    // Independent vowels
+    "tA": "\u0D85",   // අ
+    "tAA": "\u0D86",   // ආ
+    "tAE": "\u0D87",   // ඇ
+    "tAEE": "\u0D88",  // ඈ
+    "tI": "\u0D89",   // ඉ
+    "tII": "\u0D8A",   // ඊ
+    "tU": "\u0D8B",   // උ
+    "tUU": "\u0D8C",   // ඌ
+    "t,R": "\u0D8D",   // ඍ
+    "t,RR": "\u0D8E",  // ඎ
+    "t,L": "\u0D8F",   // ഌ
+    "t,LL": "\u0D90",  // ඐ
+    "tE": "\u0D91",   // එ
+    "tEE": "\u0D92",   // ඒ
+    "tAI": "\u0D93",   // ඓ
+    "tO": "\u0D94",   // ඔ
+    "tOO": "\u0D95",   // ඕ
+    "tAU": "\u0D96",   // ඖ
 
+    // Dependent vowel signs (Matras & Modifiers)
+    "VOWEL_SIGNS": {
+        "tA": "",          // Inherent 'a'
+        "tAA": "\u0DCF",   // ා (Ela-pilla)
+        "tAE": "\u0DD0",   // ැ (Ketti aed-pilla)
+        "tAEE": "\u0DD1",  // ඈ (Diga aed-pilla)
+        "tI": "\u0DD2",    // ි (Ketti is-pilla)
+        "tII": "\u0DD3",   // ී (Diga is-pilla)
+        "tU": "\u0DD4",    // ු (Ketti paa-pilla)
+        "tUU": "\u0DD6",   // ූ (Diga paa-pilla)
+        "t,R": "\u0DD8",   // ෘ (R-karamsya)
+        "tE": "\u0DD9",    // ෙ (Kombuva)
+        "tEE": "\u0DDA",   // ේ (Diga kombuva)
+        "tAI": "\u0DDB",   // ෛ (Kombuva saha ai-pilla)
+        "tO": "\u0DDC",    // ො (O-karaya)
+        "tOO": "\u0DDD",   // ෝ (Oo-karaya)
+        "tAU": "\u0DDE"    // ඖ (Au-karaya)
+    },
+
+    // Anusvara and visarga
+    "t;M": "\u0D82",   // ං
+    "t.H": "\u0D83",   // ඃ
+    "t^N": "\u0D81",   // ඁ
+    "t^U": "\u0DCA",   // ් (Al-lakuna)
+
+    // Consonants
+    "tK": "\u0D9A",   // ක
+    "tKH": "\u0D9B",   // ඛ
+    "tG": "\u0D9C",   // ග
+    "tGH": "\u0D9D",   // ඝ
+    "t;N": "\u0D9E",   // ඞ
+    "t^NG": "\u0D9F",  // ඟ
+
+    "tC": "\u0DA0",   // ච
+    "tCH": "\u0DA1",   // ඡ
+    "tJ": "\u0DA2",   // ජ
+    "tJH": "\u0DA3",   // ඣ
+    "t~N": "\u0DA4",   // ඤ
+    "t^NJ": "\u0DA5",   // ඦ
+
+    "t.T": "\u0DA7",   // ට
+    "t.TH": "\u0DA8",   // ඨ
+    "t.D": "\u0DA9",   // ඩ
+    "t.DH": "\u0DAA",   // ඪ
+    "t.N": "\u0DAB",   // ණ
+    "t^N.D": "\u0DAC", // ඬ
+
+    "tT": "\u0DAD",    // ත
+    "tTH": "\u0DAE",   // ථ
+    "tD": "\u0DAF",    // ද
+    "tDH": "\u0DB0",   // ධ
+    "tN": "\u0DB1",    // න
+    "t^ND": "\u0DB3",   // ඳ
+
+    "tP": "\u0DB4",    // ප
+    "tPH": "\u0DB5",   // ඵ  (U+0DB5)
+    "tB": "\u0DB6",    // බ
+    "tBH": "\u0DB7",   // භ
+    "tM": "\u0DB8",    // ම
+    "t^MB": "\u0DB9",  // ඹ
+
+    "tY": "\u0DBA",    // ය
+    "tR": "\u0DBB",    // ර
+    "tL": "\u0DBD",    // ල
+    "t.L": "\u0DC5",   // ළ
+    "tV": "\u0DC0",    // ව
+
+    "tSH": "\u0DC1",   // ශ
+    "t.S": "\u0DC2",   // ෂ
+    "tS": "\u0DC3",    // ස
+    "tH": "\u0DC4",    // හ
+    "tF": "\u0DC6"     // ෆ
+};
 //:w
