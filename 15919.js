@@ -1,5 +1,5 @@
 import {
-	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA, BANGLA_ASAMIYA, KAITHI, SAURASHTRA, GURUMUKHI, GUJARATI
+	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA, BANGLAASAMIYA, KAITHI, SAURASHTRA, GURUMUKHI, GUJARATI
 } from "./dicts.js";
 
 // console.log("tst: frmwrk LOADED");
@@ -177,12 +177,12 @@ const LANGUAGE_REGISTRY = {
 	},
 	bangla : {
 		autoAnu: false, 
-		dict: BANGLA_ASAMIYA,
+		dict: BANGLAASAMIYA,
 		virama : "\u09CD"
 	},
 	asamiya :{
 		autoAnu : false,
-		dict: BANGLA_ASAMIYA,
+		dict: BANGLAASAMIYA,
 		virama : "\u09CD"
 	},
 	kaithi :{
@@ -204,6 +204,11 @@ const LANGUAGE_REGISTRY = {
 		autoAnu : false,
 		dict : GUJARATI,
 		virama :"\u0ACD"
+	},
+	sinhala  {
+		autAnu: false,
+		dict: SINHALA,
+		virama :"\u0DCA"
 	}
 };
 
@@ -237,7 +242,7 @@ export {
 if (typeof exports === 'object' && typeof module !== 'undefined') {
     module.exports = { convertText, scanAndParse, LANGUAGE_REGISTRY };
 } else if (typeof window !== 'undefined') {
-    // window.15919ify = { convertText, scanAndParse, LANGUAGE_REGISTRY };
+    // window.15919ify = { convertText, scanAndParse, registerLanguage, LANGUAGE_REGISTRY };
     window.convertText = convertText; // backwards compatibility for reference html 
 }
 
