@@ -110,7 +110,7 @@ body {
 
 #outputText {
     	overflow: auto;
-	font-family: "Anek Malayalam", sans-serif;
+	font-family: "Anek Malayalam", "Noto Serif Sinhala", "Noto Serif Tibetan", sans-serif;
  	font-optical-sizing: auto;
   	font-weight: 600;
   	font-style: normal;
