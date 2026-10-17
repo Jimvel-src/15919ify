@@ -193,7 +193,7 @@ const LANGUAGE_REGISTRY = {
 	saurashtra : {
 		autoAnu : false,
 		dict: SAURASHTRA,
-		virama: "\uAC84"
+		virama: "\uA8C4"
 	},
 	gurumukhi :{
 		autoAnu: false,
