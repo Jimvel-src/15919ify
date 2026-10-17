@@ -1,5 +1,5 @@
 import {
-	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA, BANGLAASAMIYA, KAITHI, SAURASHTRA, GURUMUKHI, GUJARATI, SINHALA
+	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA, BANGLAASAMIYA, KAITHI, SAURASHTRA, GURUMUKHI, GUJARATI, SINHALA, TIBETAN
 } from "./dicts.js";
 
 // console.log("tst: frmwrk LOADED");
@@ -205,10 +205,15 @@ const LANGUAGE_REGISTRY = {
 		dict : GUJARATI,
 		virama :"\u0ACD"
 	},
-	sinhala  {
+	sinhala : {
 		autAnu: false,
 		dict: SINHALA,
 		virama :"\u0DCA"
+	},
+	tibetan : {
+		autoAnu: false,
+		dict: TIBETAN,
+		virama: "\u0F84"
 	}
 };
 
