@@ -23,10 +23,12 @@ An open-source web utility designed to take in text in 7 Bit ISO 15919 format an
 - [X] Gurumukhi
 - [X] Gujarati
 - [X] Kaithi
-- [ ] Sinhala
-- [ ] Tibetan
+- [X] Sinhala
+- [X] Tibetan
 - [ ] Thai
 - [X] Saurashtra
+
+> I won't be adding the one for Nashtaliq since, RTL will be a lot of work, and might even require a rework of the whole system, and also since many standards exist with implementations.
 
 ## Syntax and Typing
 For a basic idea on how this system works, refer to the following tables for typing instructions based on the modified [7Bit ISO 15919](https://en.wikipedia.org/wiki/ISO_15919)
