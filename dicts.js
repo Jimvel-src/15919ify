@@ -1097,7 +1097,7 @@ export const SINHALA = {
     "tUU": "\u0D8C",   // ඌ
     "t,R": "\u0D8D",   // ඍ
     "t,RR": "\u0D8E",  // ඎ
-    "t,L": "\u0D8F",   // ഌ
+    "t,L": "\u0D8F",   // 
     "t,LL": "\u0D90",  // ඐ
     "tE": "\u0D91",   // එ
     "tEE": "\u0D92",   // ඒ
@@ -1122,7 +1122,7 @@ export const SINHALA = {
         "tAI": "\u0DDB",   // ෛ (Kombuva saha ai-pilla)
         "tO": "\u0DDC",    // ො (O-karaya)
         "tOO": "\u0DDD",   // ෝ (Oo-karaya)
-        "tAU": "\u0DDE"    // ඖ (Au-karaya)
+        "tAU": "\u0DDE",    // ඖ (Au-karaya)
     },
 
     // Anusvara and visarga
@@ -1173,10 +1173,134 @@ export const SINHALA = {
     "t.L": "\u0DC5",   // ළ
     "tV": "\u0DC0",    // ව
 
-    "tSH": "\u0DC1",   // ශ
+    "tS": "\u0DC1",   // ශ
     "t.S": "\u0DC2",   // ෂ
-    "tS": "\u0DC3",    // ස
+    "tSH": "\u0DC3",    // ස
     "tH": "\u0DC4",    // හ
     "tF": "\u0DC6"     // ෆ
 };
+
+export const TIBETAN = {
+
+// Independent vowels
+    "tA": "\u0F68",        // A
+    "tAA": "\u0F68\u0F71",    // AA
+    "tI": "\u0F68\u0F72",    // I
+    "tII": "\u0F68\u0F71\u0F72",  // II
+    "tU": "\u0F68\u0F74",    // U
+    "tUU": "\u0F68\u0F71\u0F74", // UU
+    "t,R": "\u0F68\u0F76",   // Vocalic R
+    "t,RR": "\u0F68\u0FB2\u0F81", // Vocalic RR
+    "t,L": "\u0F68\u0F78",   // Vocalic L
+    "t,LL": "\u0F68\u0FB3\u0F81", // Vocalic LL
+    "tE": "\u0F68\u0F7A",    // E
+    "tEE": "\u0F68\u0F7B",   // EE
+    "tAI": "\u0F68\u0F7B",   // AI
+    "tO": "\u0F68\u0F7C",    // O
+    "tOO": "\u0F68\u0F7D",   // OO
+    "tAU": "\u0F68\u0F7D",   // AU
+
+// Dependent vowel signs (Matras & Modifiers)
+    "VOWEL_SIGNS": {
+        "tA": "",          // A (Inherent)
+        "tAA": "\u0F71",   // AA
+        "tI": "\u0F72",    // I
+        "tII": "\u0F71\u0F72", // II
+        "tU": "\u0F74",    // U
+        "tUU": "\u0F71\u0F74", // UU
+        "t,R": "\u0F76",   // Vocalic R
+        "t,RR": "\u0FB2\u0F81", // Vocalic RR
+        "t,L": "\u0F78",   // Vocalic L
+        "t,LL": "\u0FB3\u0F81", // Vocalic LL
+        "tE": "\u0F7A",    // E
+        "tEE": "\u0F7B",   // EE
+        "tAI": "\u0F7B",   // AI
+        "tO": "\u0F7C",    // O
+        "tOO": "\u0F7D",   // OO
+        "tAU": "\u0F7D",    // AU
+    },
+
+        // Anusvara and visarga
+    "t;M": "\u0F7E",   
+    "t.H": "\u0F7F",   
+    "t^N": "\u0F83",   
+    "t^U": "\u0F84",   
+
+ // Consonants
+    "tK": "\u0F40",       // ཀ — KA
+    "tKh": "\u0F41",      // ཁ — KHA
+    "tG": "\u0F42",       // ག — GA
+    "tGh": "\u0F43",      // གྷ — GHA
+    "t;N": "\u0F44",      // ང — NGA
+
+    "tC": "\u0F45",       // ཅ — CA
+    "tCh": "\u0F46",      // ཆ — CHA
+    "tJ": "\u0F47",       // ཇ — JA
+    "tJh": "\u0F47\u0FB7", // ཇྷ — JA + subjoined HA
+    "t~N": "\u0F49",      // ཉ — NYA
+
+    "t.T": "\u0F4A",      // ཊ — TTA
+    "t.TH": "\u0F4B",     // ཋ — TTHA
+    "t.D": "\u0F4C",      // ཌ — DDA
+    "t.Dh": "\u0F4D",     // ཌྷ — DDHA
+    "t.N": "\u0F4E",      // ཎ — NNA
+
+    "tT": "\u0F4F",       // ཏ — TA
+    "tTh": "\u0F50",      // ཐ — THA
+    "tD": "\u0F51",       // ད — DA
+    "tDh": "\u0F52",      // དྷ — DHA
+    "tN": "\u0F53",       // ན — NA
+    "t_N": "\u0F53",      // ན — NA (alias)
+
+    "tP": "\u0F54",       // པ — PA
+    "tPH": "\u0F55",      // ཕ — PHA
+    "tB": "\u0F56",       // བ — BA
+    "tBH": "\u0F57",      // བྷ — BHA
+    "tM": "\u0F58",       // མ — MA
+
+    "t^C": "\u0F59",      // ཙ — TSA
+    "t^CH": "\u0F5A",     // ཚ — TSHA
+
+    "tY": "\u0F61",       // ཡ — YA
+    "tR": "\u0F62",       // ར — RA
+    "tL": "\u0F63",       // ལ — LA
+    "tV": "\u0F5D",       // ཝ — WA
+
+    "tS": "\u0F64",       // ཤ — SHA
+    "t.S": "\u0F65",      // ཥ — SSA
+    "tSH": "\u0F66",      // ས — SA
+    "tH": "\u0F67",       // ཧ — HA
+
+    "t.L": "\u0F63",      // ལ — LA (alias)
+    "t_R": "\u0F62",      // ར — RA (alias)
+
+    // Special signs
+    "t;M": "\u0F7E",      // ཾ — RJES SU NGA RO (anusvara)
+    "t.H": "\u0F7F",      // ཿ — RNAM BCAD (visarga)
+    "t^U": "\u0F84",      // ྄ — HALANTA
+    "t^N": "\u0F82",      // ྂ — NYI ZLA NAA DA
+    "t~M": "\u0F83",      // ྃ — SNA LDAN
+
+    // Extended / foreign sounds
+    "t_H": "\u0F88",      // ྈ — LCE TSA CAN
+    "t^H": "\u0F89",      // ྉ — MCHU CAN
+
+    "t.R": "\u0F6C",      // ཬ — RRA
+    "t.RH": "\u0F6C\u0FB7", // ཬྷ — RRA + subjoined HA
+
+    "t;Y": "\u0F61",     // ཡ — YA (alias)
+    "t^R": "\u0F62\u0F84\u200D", // ར྄‍ — RA + HALANTA + ZWJ
+
+    "t'": "\u0F85",       // ྅ — PALUTA
+
+    "tQ": "\u0F6B",       // ཫ — KKA
+
+    "t_KH": "\u0F41\u0F39", // ཁ༹ — KHA + TSA-PHRU
+    "t.G": "\u0F42\u0F39",  // ག༹ — GA + TSA-PHRU
+    "tF": "\u0F55\u0F39",  // ཕ༹ — PHA + TSA-PHRU
+    "t^Z": "\u0F5E",       // ཞ — ZHA
+    "tW": "\u0F5D\u0F39"   // ཝ༹ — WA + TSA-PHRU
+
+};
+
 //:w
