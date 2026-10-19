@@ -17,7 +17,7 @@ An open-source web utility designed to take in text in 7 Bit ISO 15919 format an
 - [X] Tamil (id: `tamil`)
 - [X] Kannada (id: `kannada` )
 - [X] Telugu (id: `telugu`)
-- [X] Devenagari (id: `devanagariV`)
+- [X] Devenagari (id: `devanagari`)
 - [X] Odia (id: `odia`)
 - [X] Bengali (id: `bangla`)
 - [X] Asamiya (id: `asamiya`)
