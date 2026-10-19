@@ -206,7 +206,7 @@ const LANGUAGE_REGISTRY = {
 		virama :"\u0ACD"
 	},
 	sinhala : {
-		autAnu: false,
+		autoAnu: false,
 		dict: SINHALA,
 		virama :"\u0DCA"
 	},
@@ -240,12 +240,15 @@ export function tokenize(inputText, options = {}) {
 export { 
   convertText, 
   scanAndParse, 
-  LANGUAGE_REGISTRY 
+  LANGUAGE_REGISTRY,
+  tokenize
 };
 
 // fallback for legacy CJS (Node.js) & global Browser window
 if (typeof exports === 'object' && typeof module !== 'undefined') {
-    module.exports = { convertText, scanAndParse, LANGUAGE_REGISTRY };
+    module.exports = { 
+	    convertText, scanAndParse, LANGUAGE_REGISTRY, tokenize 
+    };
 } else if (typeof window !== 'undefined') {
     // window.15919ify = { convertText, scanAndParse, registerLanguage, LANGUAGE_REGISTRY };
     window.convertText = convertText; // backwards compatibility for reference html 
