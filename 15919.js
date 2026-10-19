@@ -230,7 +230,7 @@ function convertText(inputText, lang) {
 //    return language.converter(tokenea);
 }
 
-export function tokenize(inputText, options = {}) {
+function tokenize(inputText, options = {}) {
     const autoAnu = options.autoAnu ?? false;
     return scanAndParse(inputText, autoAnu);
 }
