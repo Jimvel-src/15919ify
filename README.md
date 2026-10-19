@@ -11,7 +11,7 @@ An open-source web utility designed to take in text in 7 Bit ISO 15919 format an
 
 ## Features
 * Scans input strings character-by-character, intelligently grouping multi-character consonant and vowel clusters (up to 3-character keys)
-* Dictionary based mapping system covering all letters and symbols in  `Malayalam`, `Tamil` & `Kannada`
+* Dictionary based mapping system covering all letters and symbols in the following langauges
 ## Scripts supported
 - [X] Malayalam (id: `malayalam`)
 - [X] Tamil (id: `tamil`)
