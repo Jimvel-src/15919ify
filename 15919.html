@@ -83,28 +83,36 @@ autorenew
 				catch (error){ console.error(error); }
 			});
 
+
 			document.addEventListener('keydown', (e) => {
-				if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
-				if (document.activeElement.isContentEditable) return;
-				const isAlpha = /^[a-zA-z]$/.test(e.key);
-				const isEnter = e.key == 'Enter';
-				const isSpace = e.key === ' ' || e.code === 'Space';
-				const OSKeys = e.ctrlKey;
-				if (isAlpha || isEnter && !OSKeys) {
-					inputTextBox.focus();
-					if (isAlpha || isSpace) {
-						e.preventDefault();
-						const pos = inputTextBox.selectionStart ?? inputTextBox.value.length;
-						const charToInsert = isSpace ? ' ' : e.key;
-						inputTextBox.value = inputTextBox.value.slice(0, pos) + charToInsert + inputTextBox.value.slice(pos);
-						inputTextBox.selectionStart = inputTextBox.selectionEnd = pos + 1;
-					}
-					inputTextBox.focus();
-					if (shouldLog) {
-						console.log("new line auto render.");
-					}
-				}
-			});		
+    				if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+    				if (document.activeElement.isContentEditable) return;
+
+    				// not intercept keyboard shortcuts.
+   				if (e.ctrlKey || e.altKey || e.metaKey) return;
+
+    				const isAlpha = /^[a-zA-Z]$/.test(e.key);
+    				const isEnter = e.key === 'Enter';
+    				const isSpace = e.key === ' ' || e.code === 'Space';
+
+    				if (isAlpha || isEnter || isSpace) {
+        				inputTextBox.focus();
+
+        				if (isAlpha || isSpace) {
+            					e.preventDefault();
+
+            					const pos = inputTextBox.selectionStart ?? inputTextBox.value.length;
+            					const charToInsert = isSpace ? ' ' : e.key;
+
+            					inputTextBox.value = inputTextBox.value.slice(0, pos) + charToInsert + inputTextBox.value.slice(pos);
+						inputTextBox.selectionStart = inputTextBox.selectionEnd = pos + charToInsert.length;
+
+						// trigger automatic conversion.
+            					inputTextBox.dispatchEvent(new Event('input', { bubbles: true }));
+        				}
+    				}
+			});
+	
 		</script>
 	</body>
 </html>
