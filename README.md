@@ -1,7 +1,10 @@
 
+
 # 15919ify+
 An open-source web utility designed to take in text in 7 Bit ISO 15919 format and transcode it into various Indic Scripts. While built with a modular architecture capable of scaling to multiple languages, it currently only has support for the ones in the standard as mentioned below. Current Malayalam setup is made taking huge liberties like introducing various character combinations not in the current standard (ie, chillu letters).
 > Try the tool out [here](https://sox.nekoweb.org/15919.html)
+
+> Made for Hackclub Stardance !! Check out the [project page](https://stardance.hackclub.com/projects/61635) 
 
 ## File structure
 * `15919.js` - The core parsing engine and transliteration framework. Currently only supports mapping to Malayalam, Tamil, Kannada, Telugu and Devanagiri but can be modified to accomodate other languages
@@ -39,6 +42,12 @@ For a basic idea on how this system works, refer to the following tables for typ
 * Refer to [Telugu section](telugu.md) for instructions on typing Telugu
 * Refer to [Devanagari section](devanagari.md) for instructions on typing Hindi, Nepali and other languages which use Devanagiri
 * Refer to [Odiya Section](odia.md) for instructions on typing Odia / Oriya
+* Refer to [Bengali-Asamiya Section](ba-as.md) for instructions on typing the Bangla-Asamiya script.
+* Refer to [Gurumuki Section](gurumukhi.md) for instructions on typing the Gurmukhi script.
+* Refer to [Gujarati](gujarati.md) for instructions on typing the Gujarati script.
+
+
+
 
 ## For Devs (js only methord)
 ### ES modules
