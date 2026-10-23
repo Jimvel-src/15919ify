@@ -27,7 +27,7 @@ export const PUNCT_DICT = {
     ",r": "t,R", ",rr": "t,Rr", ",l": "t,L", ",ll": "t,Ll",
     ";m": "t;M", ".h": "t.H", ";n": "t;N", "~n": "t~N", ".n": "t.N",
     "_r": "t_R", "_t": "t_T", "_n": "t_N", "_l": "t_L",
-    ".l": "t.L", "v": "tV", ".s": "t.S", "'": "t'", "^u": "t^U", "~m": "t~M",  "^n" :"t^N", "^c" : "t^C", "_k":"t_K", "z" : "tZ", "_h": "t_H", "^h" : "t^H", "^c" : "t^C", "^ch" :  "t^CH",".r" : "t.R", ".rh" : "t.RH", ";y" : "t;Y", "^r" : "t^R", "q":"tQ", "_kh":"t_KH", ".g":"t.G", "^z":"t^Z", "f":"tF", 
+    ".l": "t.L", "v": "tV", ".s": "t.S", "'": "t'", "^u": "t^U", "~m": "t~M",  "^n" :"t^N", "^c" : "t^C", "_k":"t_K", "z" : "tZ", "_h": "t_H", "^h" : "t^H", "^c" : "t^C", "^ch" :  "t^CH",".r" : "t.R", ".rh" : "t.RH", ";y" : "t;Y", "^r" : "t^R", "q":"tQ", "_kh":"t_KH", ".g":"t.G", "^z":"t^Z", "f":"tF", "*t":"t*T",
 	".t":"t.T", ".th": "t.TH", ".d":"t.D", ".dh": "t.Dh",
 	"*.n":"t*.N", "*n":"t*N", "*r":"t*R", "*l": "t*L",  "*.l": "t*.L", "*k": "t*K", // really should organise this
 	"^ng":"t^NG", "^nj":"t^NJ", "^n.d":"t^N.D", "^nd":"t^ND", "^mb":"t^MB"
@@ -647,7 +647,7 @@ export const BANGLAASAMIYA = {
     "VOWEL_SIGNS": {
         "tAA": "\u09BE",    
         "tI": "\u09BF",     
-        "tII": "\u09B0",    
+        "tII": "\u09C0",    
         "tU": "\u09C1",     
         "tUU": "\u09C2",    
         "t,R": "\u09C3",    
@@ -700,10 +700,10 @@ export const BANGLAASAMIYA = {
 
     "tS": "\u09B8",     
     "t.S": "\u09B7",    
-    "tSH": "\u09B8",    
+    "tSH": "\u09B6",    
     "tH": "\u09B9",     
   
-    "t_R": "\u0931",    
+    "t_R": "\u09B0\u09BC",    
 	"t*T":"\u09CE",
 	"t_N":"\u09A8",
 
@@ -711,7 +711,7 @@ export const BANGLAASAMIYA = {
     "t;M": "\u0982",  
     "t.H": "\u0983",   
     "t^U": "\u09CD",    
-	"t~M": "\u0901",    
+	"t~M": "\u0981",    
 
 	"t;Y":"\u09DF",
 	"t'":"\u09BD",
@@ -972,7 +972,8 @@ export const GURUMUKHI = {
     "t;M": "\u0A02",    
     "t.H": "\u0A03",    
     "t^U": "\u0A4D",    
-     "t~M": "\u0A01",    
+     "t~M": "\u0A01",
+	"t*":"\u0A71"
 
 
     // Extended / foreign sounds
@@ -1067,7 +1068,7 @@ export const GUJARATI = {
     "t;M": "\u0A82",     // ં
     "t.H": "\u0A83",     // ઃ
     "t^U": "\u0ACD",     // ્
-    "t^N": "\u0A81",     // ઁ
+    "t~M": "\u0A81",     // ઁ
     "t'": "\u0ABD",      // ઽ
 
     // Extended / foreign sounds
