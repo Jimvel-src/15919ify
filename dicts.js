@@ -973,7 +973,7 @@ export const GURUMUKHI = {
     "t.H": "\u0A03",    
     "t^U": "\u0A4D",    
      "t~M": "\u0A01",
-	"t*":"\u0A71"
+	"t*":"\u0A71",
 
 
     // Extended / foreign sounds
