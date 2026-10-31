@@ -3,17 +3,24 @@
 	<head>
 		<title>15919+</title>
 		<script type="module" src="15919.js" defer></script>
+		<script type="module" src="latinify.js" defer></script>
 		<link rel="stylesheet" href="15919.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=autorenew" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@600&display=swap&family=Noto+Serif+Tibetan:wght@100..900&family=Noto+Serif+Sinhala:wght@100..900" rel="stylesheet">	
 	</head>
 	<body>
 		<div id="ribbon">
 			<a id="back" href="https://sox.nekoweb.org/projects.html">Back</a>
-			<h1 class="title" id="title">15919ify+</h1>
-			<a href="https://github.com/Jimvel-src/15919ify/tree/main" id="ver">v1.8.8</a>
+			<div id="latinbox" >
+				Latinify
+				<input type="checkbox" id="latinToggle">
+			</div>
+				<h1 class="title" id="title">15919ify<span id="plus">+</span></h1>
+
+			<a href="https://github.com/Jimvel-src/15919ify/tree/main" id="ver">v2.0</a>
 			<select id="langdd">
 				<option value="malayalam">Malayalam</option>
 				<option value="tamil">Tamil</option>
@@ -41,6 +48,7 @@ autorenew
 			<div id="out">	<p id="outputText">output.. </p>	</div>
 		</div>
 		<script>
+			latinToggle = document.getElementById('latinToggle');
 			let idleTimer;
 			const delayIdle = 500; //adjust if you want faster or slower refreshes.
 			const inputTextBox = document.getElementById('inputText'); 
@@ -52,10 +60,13 @@ autorenew
 				idleTimer = setTimeout(() => {
 					if (shouldLog) {console.log("idle. trying run.");}
 					const lang = dd.value;
-					try {
+					try {if (!latinToggle.checked) {
 						document.getElementById(outputDOM).innerText = convertText(inputTextBox.value, lang);// the actual function
-						if (shouldLog) {console.log("success");}
-					}
+						if (shouldLog) {console.log("success");}}
+						else if (latinToggle.checked) {document.getElementById(outputDOM).innerText = toLatinText(inputTextBox.value, lang);// the actual function
+						if (shouldLog) {console.log("success");}}
+}
+					
 					catch (error ) {console.error(error);}
 				}, delayIdle);
 			});
@@ -64,10 +75,17 @@ autorenew
 			inputTextBox.addEventListener('keydown', (e) => {  // press enter, auto refreesh
 				if (e.key === 'Enter') {
 					const lang = dd.value;
-					try {
+					try {if (!latinToggle.checked) {
+
 						document.getElementById(outputDOM).innerText = convertText(inputTextBox.value, lang);								    if (shouldLog) {
 							console.log("new line run");				
-						}
+						}}
+						else if (latinToggle.checked) {
+
+						document.getElementById(outputDOM).innerText = toLatinText(inputTextBox.value, lang);								    if (shouldLog) {
+							console.log("new line run");				
+						}}
+
 					}
 					catch (error){ console.error(error); }
 				}
@@ -75,10 +93,17 @@ autorenew
 
 			dd.addEventListener('change', (event) => { // refresh on lang change
 				const lang = dd.value;
-				try {
+				try {if (!latinToggle.checked) {
+
 					document.getElementById(outputDOM).innerText = convertText(inputTextBox.value, lang);								    if (shouldLog) {
 						console.log("lang change run");				
-					}
+					}}
+				else if (latinToggle.checked) {
+
+					document.getElementById(outputDOM).innerText = toLatinText(inputTextBox.value, lang);								    if (shouldLog) {
+						console.log("lang change run");				
+					}}
+
 				}
 				catch (error){ console.error(error); }
 			});
