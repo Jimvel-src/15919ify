@@ -1,8 +1,7 @@
 console.log("DICTS LOADED");
 
-export const PUNCTUATION = new Set(['.', ',', '^', ';', '~', '-']);
+export const PUNCTUATION = new Set(['.', ',', '^', ';', '~', '-', ' ', '\n', '+', '=', ':', '?','/', '%', '(', ')']);
 export const VOWELS = new Set(['a', 'e', 'i', 'o', 'u', 'aa', 'ee', 'ii', 'oo', 'uu', 'ai', 'au', ';m', '.h', ',r', ',rr', ',l', ',ll', '^u']);
-
 
 export const STANDARD_DICT = {
     // Vowels
