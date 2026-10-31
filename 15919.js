@@ -1,14 +1,16 @@
 import {
 	PUNCTUATION, VOWELS, MASTER_DICT, CHILLS, MALAYALAM, TAMIL, KANNADA, TELUGU, DEVANAGARI, ODIA, BANGLAASAMIYA, KAITHI, SAURASHTRA, GURUMUKHI, GUJARATI, SINHALA, TIBETAN
 } from "./dicts.js";
-
+const NO_A_VOWELS = new Set(['e', 'i', 'o', 'u', 'aa', 'ee', 'ii', 'oo', 'uu', 'ai', 'au', ';m', '.h', ',r', ',rr', ',l', ',ll', '^u']);
 // console.log("tst: frmwrk LOADED");
 
-function isVowel(char) {
+export function isVowel(char) {
 	return VOWELS.has(char);
 }
-
-function isChill(char) {
+export function isVowelNoA(char) {
+	return NO_A_VOWELS.has(char);
+}
+export function isChill(char) {
 	return CHILLS.has(char);
 }
 
