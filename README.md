@@ -1,11 +1,14 @@
-<img src="https://sox.nekoweb.org/15919thumb1.png">
 
----
 
+# 15919ify+
 An open-source web utility designed to take in text in 7 Bit ISO 15919 format and transcode it into various Indic Scripts. While built with a modular architecture capable of scaling to multiple languages, it currently only has support for the ones in the standard as mentioned below. Current Malayalam setup is made taking huge liberties like introducing various character combinations not in the current standard (ie, chillu letters).
 > Try the tool out [here](https://sox.nekoweb.org/15919.html)
 
 > Made for Hackclub Stardance !! Check out the [project page](https://stardance.hackclub.com/projects/61635) 
+
+---
+<img src="https://raw.githubusercontent.com/rzashakeri/beautifygithubprofile/master/cover-repo.jpg">
+---
 
 ## File structure
 * `15919.js` - The core parsing engine and transliteration framework. Currently only supports mapping to Malayalam, Tamil, Kannada, Telugu and Devanagiri but can be modified to accomodate other languages
@@ -139,6 +142,23 @@ const tokens = scanAndParse("namaskaaram", false);
 
 **Returns** : an array of parsed tokens.
 Unlike tokenize(), this function takes the option as a direct argument instead of an options object.
+
+
+### latinify.js
+Only exposes one function ``` toLatinText(input, lang)```
+* ```input``` must be in indic character of chosen lang
+* ```lang``` is lanaguge id explained earlier.
+
+This function takes in Indic Language strings (of chosen lang) and outputs it in our modified latin format.
+
+#### Importing and usage
+``` 
+import "toLatinText" from "15919ify/latinify.js"
+
+toLatinify("\u0D39\u0D48", "malayalam");
+```
+
+---
 
 ### Access the language registry
 `LANGUAGE_REGISTRY `exposes the configuration used by convertText()
