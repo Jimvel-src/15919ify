@@ -1,59 +1,51 @@
 
+<img src="https://sox.nekoweb.org/15919thumb1.png">
 
-# 15919ify+
+---
+
 An open-source web utility designed to take in text in 7 Bit ISO 15919 format and transcode it into various Indic Scripts. While built with a modular architecture capable of scaling to multiple languages, it currently only has support for the ones in the standard as mentioned below. Current Malayalam setup is made taking huge liberties like introducing various character combinations not in the current standard (ie, chillu letters).
 > Try the tool out [here](https://sox.nekoweb.org/15919.html)
 
 > Made for Hackclub Stardance !! Check out the [project page](https://stardance.hackclub.com/projects/61635) 
 
----
-<img src="https://raw.githubusercontent.com/rzashakeri/beautifygithubprofile/master/cover-repo.jpg">
----
-
 ## File structure
 * `15919.js` - The core parsing engine and transliteration framework. Currently only supports mapping to Malayalam, Tamil, Kannada, Telugu and Devanagiri but can be modified to accomodate other languages
-* `15919.html` - An example reference implemtation showing how it could be used in a bare-bones way, with live debounced input listeners and manual override triggers.
-* `15919.css` - CSS for my page I made open source, cuz good practice
 * `dicts.js` - All UNICODE mappings and other DICTS have been moved to this file after v1.6.1
 
 ## Features
 * Scans input strings character-by-character, intelligently grouping multi-character consonant and vowel clusters (up to 3-character keys)
 * Dictionary based mapping system covering all letters and symbols in the following langauges
 ## Scripts supported
-- [X] Malayalam (id: `malayalam`)
-- [X] Tamil (id: `tamil`)
-- [X] Kannada (id: `kannada` )
-- [X] Telugu (id: `telugu`)
-- [X] Devenagari (id: `devanagari`)
-- [X] Odia (id: `odia`)
-- [X] Bengali (id: `bangla`)
-- [X] Asamiya (id: `asamiya`)
-- [X] Gurumukhi (id: `gurumukhi`)
-- [X] Gujarati (id: `gujarati`)
-- [X] Kaithi (id: `kaithi`)
-- [X] Sinhala (id: `sinhala`)
-- [X] Tibetan (id: `tibetan`)
-- [X] Saurashtra (id: `saurashtra`)
-
-> I won't be adding the one for Nashtaliq since, RTL will be a lot of work, and might even require a rework of the whole system, and also since many standards exist with implementations.
-> Not adding thai, due to symbol input order being mixed up, will need a rework, and also since it isnt really covered in the standard.
-
+- Malayalam (id: `malayalam`)
+- Tamil (id: `tamil`)
+- Kannada (id: `kannada` )
+- Telugu (id: `telugu`)
+- Devenagari (id: `devanagari`)
+- Odia (id: `odia`)
+- Bengali (id: `bangla`)
+- Asamiya (id: `asamiya`)
+- Gurumukhi (id: `gurumukhi`)
+- Gujarati (id: `gujarati`)
+- Kaithi (id: `kaithi`)
+- Sinhala (id: `sinhala`)
+- Tibetan (id: `tibetan`)
+- Saurashtra (id: `saurashtra`)
 ## Syntax and Typing
 For a basic idea on how this system works, refer to the following tables for typing instructions based on the modified [7Bit ISO 15919](https://en.wikipedia.org/wiki/ISO_15919)
-* Refer to [Malayalam section](malayalam.md) for instructions on typing Malayalam
-* Refer to [Tamil section](tamil.md) for instructions on typing Tamil
-* Refer to [Kannada section](kannada.md) for instructions on typing Kannada
-* Refer to [Telugu section](telugu.md) for instructions on typing Telugu
-* Refer to [Devanagari section](devanagari.md) for instructions on typing Hindi, Nepali and other languages which use Devanagiri
-* Refer to [Odiya Section](odia.md) for instructions on typing Odia / Oriya
-* Refer to [Bengali-Asamiya Section](ba-as.md) for instructions on typing the Bangla-Asamiya script.
-* Refer to [Gurumuki Section](gurumukhi.md) for instructions on typing the Gurmukhi script.
-* Refer to [Gujarati](gujarati.md) for instructions on typing the Gujarati script.
+* Refer to [Malayalam section](https://github.com/Jimvel-src/15919ify/blob/main/malayalam.md) for instructions on typing Malayalam
+* Refer to [Tamil section](https://github.com/Jimvel-src/15919ify/blob/main/tamil.md) for instructions on typing Tamil
+* Refer to [Kannada section](https://github.com/Jimvel-src/15919ify/blob/main/kannada.md) for instructions on typing Kannada
+* Refer to [Telugu section](https://github.com/Jimvel-src/15919ify/blob/main/telugu.md) for instructions on typing Telugu
+* Refer to [Devanagari section](https://github.com/Jimvel-src/15919ify/blob/main/devanagari.md) for instructions on typing Hindi, Nepali and other languages which use Devanagiri
+* Refer to [Odia Section](https://github.com/Jimvel-src/15919ify/blob/main/odia.md) for instructions on typing Odia / Oriya
+* Refer to [Bengali-Asamiya Section](https://github.com/Jimvel-src/15919ify/blob/main/ba-as.md) for instructions on typing the Bangla-Asamiya script.
+* Refer to [Gurumuki Section](https://github.com/Jimvel-src/15919ify/blob/main/gurumukhi.md) for instructions on typing the Gurmukhi script.
+* Refer to [Gujarati](https://github.com/Jimvel-src/15919ify/blob/main/gujarati.md) for instructions on typing the Gujarati script.
 
 
 
 
-## For Devs (js only methord)
+## For Devs (js only method)
 ### ES modules
 Import the functions from the public entry point:
 ```
@@ -62,16 +54,15 @@ import {
     tokenize,
     scanAndParse,
     LANGUAGE_REGISTRY
-} from "./15919.js";
+} from "15919ify";
 ```
 
-Replace ./15919.js with the actual relative path to the package entry point.
 Not all these functions are required for usage, import as needed. (vide explainations below)
 ### Convert text
 Use convertText(inputText, lang) to transliterate Latin input into the requested script. 
 Example : 
 ```
-import { convertText } from "./15919.js";
+import { convertText } from "15919ify";
 
 console.log(convertText("namaskaaram", "malayalam"));
 console.log(convertText("namaste", "devanagari"));
@@ -82,7 +73,7 @@ console.log(convertText("vanakkam", "tamil"));
 | Parameter | Type | Description | 
 | --- | --- |  --- |
 | InputText | string | Latin transliteration input. | 
-| lang | string | Output script identifiern (vide scripts supported) |
+| lang | string | Output script identifier (vide scripts supported) |
 
 **Returns** : string containing the converted text.
 
@@ -95,7 +86,7 @@ convertText("example", "unsupported");
 ### Tokenize input
 Use `tokenize(inputText, options)` when you need the parsed tokens rather than the final script output.
 ```
-import { tokenize } from "./15919.js";
+import { tokenize } from "15919ify";
 
 const tokens = tokenize("namaskaaram");
 
@@ -132,7 +123,7 @@ Inspect type before accessing consonant or vowel, since these fields are not pre
 ### Parse input directly
 `scanAndParse(inputText, autoAnu)` exposes the underlying scanner and parser.
 ``` 
-import { scanAndParse } from "./15919.js";
+import { scanAndParse } from "15919ify";
 
 const tokens = scanAndParse("namaskaaram", false);
 ```
@@ -142,7 +133,6 @@ const tokens = scanAndParse("namaskaaram", false);
 
 **Returns** : an array of parsed tokens.
 Unlike tokenize(), this function takes the option as a direct argument instead of an options object.
-
 
 ### latinify.js
 Only exposes one function ``` toLatinText(input, lang)```
@@ -160,10 +150,11 @@ toLatinify("\u0D39\u0D48", "malayalam");
 
 ---
 
+
 ### Access the language registry
 `LANGUAGE_REGISTRY `exposes the configuration used by convertText()
 ``` 
-import { LANGUAGE_REGISTRY } from "./15919.js";
+import { LANGUAGE_REGISTRY } from "15919ify";
 
 console.log(Object.keys(LANGUAGE_REGISTRY));
 console.log(LANGUAGE_REGISTRY.malayalam);
@@ -211,8 +202,6 @@ module.exports = {
 };
 ```
 
-
-
 ### Dev Notes : 
 * Bengali and Assamese have separate registry entries but currently share the same dictionary object. Their handling of the Ra character is distinguished in the output conversion logic.
 * When adding a script, provide its dictionary and configure its virama and automatic anusvara behavior.
@@ -221,3 +210,10 @@ module.exports = {
 * The ISO standard 15919 is used for transliterating text from Indic Languages to Latin, while this tool does the opposite, converts text from the latin format (vide next line) and converts it into various scripts.
 * Chillu letters (in malayalam) are typed using the symbol `*` as a prefix, and this symbol doesnt not exist in the standard and is a tool specific implementation I made up. 
 
+## Installation
+```
+npm install 15919ify
+```
+
+## License
+This project is open-source under the [MIT License](LICENSE).
